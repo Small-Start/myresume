@@ -1,5 +1,4 @@
-
-	<html>
+<html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
@@ -13,50 +12,49 @@
 		<script type="text/javascript" src="funcs.js"></script>
 		
 	</head>
-	<body  ng-app="myApp" ng-init="status=true">
+		<body  ng-app="myApp" ng-init="status=true">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
+				<div class="row">
+					<div class="col-md-4">
 	                  
 	                  <button  onclick="formvisible()">visible</button>
 					<button  onclick="formhide()">hide</button>
-			<form class="form" name="myform" ng-show="status" novalidate>
-        <div class="main1"ng-show="status">
-        	
-        	
-        		
-           <div id="personal" class="describe">
-              <a class="waves-effect waves-light btn" ng-click="description()">Personal Details</a>
-                  
-                <table class="table">
+				<form class="form" col s12" name="myform" novalidate">
+	        <div class="main1" ng-show="status">
+	        	
+	        	
+	        	<br>
+	        		
+	           <div id="personal" class="describe">
+	               
 
-                    <tr>
-                    	<div class="input-field col s12">
+	                <table class="table" >
+	                    <tr>
+	                    	<div class="input-field col s12">
 
-                        <td>Name </td>
-                        <td><input type="text" id="name" placeholder="Name" required ng-model="input.name"></td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <td> Email Id</td>
-                        <td colspan="1"><input type="email" id="email" placeholder="example@domain.com" ng-model="input.email" required></td>
-                    </tr>
-                    <tr>
-                        <td> Contact</td>
-                        <td><input type="number" id="contact" placeholder="Mobile Number" required ng-model="input.contact" ></td>
-                    </tr>
-                </table>
-             </div>
-            
-        
+	                        <td>Name </td>
+	                        <td><input type="text" id="name" placeholder="Name" required ng-model="name"></td>
+	                        </div>
+	                    </tr>
+	                    <tr>
+	                        <td> Email Id</td>
+	                        <td colspan="1"><input type="email" id="email" placeholder="example@domain.com" ng-model="input.email" required></td>
+	                    </tr>
+	                    <tr>
+	                        <td> Contact</td>
+	                        <td><input type="number" id="contact" placeholder="Mobile Number" required ng-model="input.contact" ></td>
+	                    </tr>
+	                </table>
+	             </div>
+	            </div> 
+	        </div>
+        <br>
           <!--  <div id="file">
                 <input type="file" name="pic" accept="image/*">
-            </div> <div ng-controller="myCtrl">
-          <a class="waves-effect waves-light btn" ng-click="description()">Education Details</a>-->
+            </div> -->
             <div id="education" class="describe" >
-            	 <a class="waves-effect waves-light btn" ng-click="description()">Education Details</a>
-               
-              <table class="table edutable" id="edtable">
+               <br>
+                <table class="edutable" id="edtable"  >
                     <tr>
                         <th>Course</th>
                         <th>College/School</th>
@@ -89,14 +87,17 @@
                 </table>
             </div>
               </div>
-            <div id="addskills" class="skills" >
-               <a class="waves-effect waves-light btn" ng-click="description()" >TECHNICAL SKILLS</a>
-                <input  id="technical" ng-model="input.technicalskills"type="text" placeholder="example -: c,java,Android,database" class="text">
+              
+            <div id="addskills" class="skills" ng-controller="skills">
+                <a class="waves-effect waves-light btn" ng-click="description()" >TECHNICAL SKILLS</a>
+                <br>
+                <input  id="technical" ng-model="input.technicalskills"type="text" placeholder="example -: c,java,Android,database" class="text" ng-show="myVar">
             </div>
-            
-            <div id="project" >
-            	 <a class="waves-effect waves-light btn" ng-click="description()">Projects</a>
-                <table class="edutable" id="projecttable">
+            <br>
+            <div id="project" ng-controller="projects">
+            	<a class="waves-effect waves-light btn" ng-click="description()" >PROJECTS</a>
+            	<br><br>
+                <table class="edutable" id="projecttable" ng-show="myVar">
                     <tr>
                         <th>Title</th>
                         <th>Technology used</th>
@@ -121,9 +122,11 @@
                 </table>
            
             </div>
+            <div ng-controller="intern">
             <div id="intern">
-                 <a class="waves-effect waves-light btn" ng-click="description()">Internship</a>
-              <table class="edutable" id="interntable">
+            	<a class="waves-effect waves-light btn" ng-click="description()" >Internship</a>
+            	<br>
+                <table class="edutable" id="interntable" ng-show="myVar"><br>
                     <tr>
                         <th>Company Name</th>
                         <th>Duration</th>
@@ -139,10 +142,13 @@
                 
             </div>
 
-
+           </div>
+           
+           <div ng-controller="extraactivities">
             <div id="activity">
-                 <a class="waves-effect waves-light btn" ng-click="description()">Extra Activities</a>
-                <table class="edutable" id="activitytable">
+            	<a class="waves-effect waves-light btn" ng-click="description()" >Extra Activities</a>
+            	<br>
+                <table class="edutable" id="activitytable" ng-show="myVar">
                     <tr>
                         <th>Event</th>
                         <th>Place</th>
@@ -164,22 +170,30 @@
                         <td><input id="extrarole2"type="text" ng-model="input.role[2]"></td>
                     </tr>
                 </table>
+                </div>
+            </div>
+            
+            <div ng-controller="skills">
+            <div id="skill">
+            	<br>
+            	<a class="waves-effect waves-light btn" ng-click="description()" >SKILLS</a><br>
+               
+                 <input ng-show="myVar" id="hobby" type="text" required placeholder="example -: singing,playing,Travelling">
                 
             </div>
-            <div id="skill">
-                <table>
-                     <a class="waves-effect waves-light btn" ng-click="description()">Skills</a>
-                    <input id="hobby" type="text" required placeholder="example -: singing,playing,Travelling">
-                </table>
-            </div>
-            <button type="submit" value="Submit" id="submit"ng-click="status=!status">PREVIEW</button>
+        </div>
+        <br><br>
+             	<a class="waves-effect waves-light btn" id="submit"ng-click="status=!status">Preview</a>
+         <!--   <button type="submit" value="Submit" id="submit"ng-click="status=!status">PREVIEW</button>-->
               
   
     </form>
-</div>
 
-            <div class="col-md-8">
-			<div class="main" >
+
+
+				</div>
+				<div class="col-md-8">
+					<div class="main" ng-show="status">
 
 
 				<div class ="row clearfix r1">
@@ -188,7 +202,7 @@
 							<img  class="img-responsive" src="profile.jpg">
 						</div>
 						<div class="col-xs-10">
-							<div class="name"><h1 >{{input.name}}</h1></div>
+							<div class="name"><h1 >{{name}}</h1></div>
 					</div>
 					<div class="row clearfix personaldetails ">
 						<div class="col-xs-2"></div>
@@ -281,6 +295,7 @@
 							</div>
 
 						</div>
+
 						<div class="col-xs-9 details">
 							<div class="row clearfix 4 degree"><h4>Internship</h4>
 								<div class="col-xs-4 university">COMPANY NAME :<br>{{input.company[0]}} </div>
@@ -339,11 +354,16 @@
          </div>
 
 			</div>
-		</div>
+			
+
+				</div>
+
+
+			</div>
 	</div>
-	</div>
-			<script type="text/javascript">
-          function formvisible(){
+<script type="text/javascript">
+
+			function formvisible(){
 				console.log('sucess')
 				$( ".form" ).animate({
 
@@ -360,27 +380,26 @@
 				$( ".form" ).animate({
 
    
-    left: "-500px",
+    left: "-285px",
     
   }, 500
     // Animation complete.
   );
 			}
-			
-            
-
-
-
-             var app = angular.module('myApp', []);
+              var app = angular.module('myApp', []);
 app.controller('myCtrl', ['$scope', function($scope) {
- 
-  	
+  $scope.description = function(){
+
+  	$scope.myVar=!$scope.myVar;
+  }
+  	;
 
   	
  
 }]);
-/*
+
 app.controller('personal', ['$scope', function($scope) {
+	$scope.name="JOHN";
   $scope.description = function(){
 
   	$scope.myVar=!$scope.myVar;
@@ -388,7 +407,8 @@ app.controller('personal', ['$scope', function($scope) {
   	;
 
 		
-	}]);		
+	}]);
+
 app.controller('projects', ['$scope', function($scope) {
   $scope.description = function(){
 
@@ -406,7 +426,44 @@ app.controller('skills', ['$scope', function($scope) {
   	;
 
 		
-	}]);*/
+	}]);		
+
+app.controller('intern', ['$scope', function($scope) {
+  $scope.description = function(){
+
+  	$scope.myVar=!$scope.myVar;
+  }
+  	;
+
+		
+	}]);	
+	app.controller('intern', ['$scope', function($scope) {
+  $scope.description = function(){
+
+  	$scope.myVar=!$scope.myVar;
+  }
+  	;
+
+		
+	}]);	
+	app.controller('extraactivities', ['$scope', function($scope) {
+  $scope.description = function(){
+
+  	$scope.myVar=!$scope.myVar;
+  }
+  	;
+
+		
+	}]);		
+	app.controller('skills', ['$scope', function($scope) {
+  $scope.description = function(){
+
+  	$scope.myVar=!$scope.myVar;
+  }
+  	;
+
+		
+	}]);	
 			</script>
 			
 			

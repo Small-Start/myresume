@@ -16,9 +16,10 @@ margin-left:auto;
 margin-right:auto;
 background-color:whitesmoke;
 height:2000px;
-
+z-index:95;
 font-family: Rockwell,"Courier New", Courier, Georgia,
                  Times, "Times New Roman", serif;
+position: relative;
 }
 .name h1{
 	color:black;
@@ -104,4 +105,30 @@ font-style: italic;
 .remove{
 	margin-left:40%;
 	margin-right: 40%;
+}
+form{
+	position:relative;
+	background-color:wheat;
+	z-index:99;
+	left:-900px;
+	top:-2020px;
+	max-width: 600px! important;
+}
+table#edtable{
+position: relative;
+z-index:99;
+}
+.show{
+	position: relative;
+	top:20px;
+}
+.visible{
+	position: relative;
+}
+#btn3,#btn4{
+	font-size:30px;
+}
+#btn4,#btn3:hover{
+color: green;
+cursor:pointer;
 }
