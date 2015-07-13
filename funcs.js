@@ -213,6 +213,11 @@ function winprint()
 	$('#bt2').hide()
 	$('#btn3').hide()
 	$('#btn4').hide()
+	
 	window.print();
+	$('#btn3').show()
+	$('#btn4').show()
+	$('#bt1').show()
+	$('#bt2').show()
 
 }
