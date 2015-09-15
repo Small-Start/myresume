@@ -134,8 +134,6 @@ font-family: Courier New;
 form{
 	position:relative;
 	z-index:99;
-	display:none;
-	top: -2174px;
 	background-image:url(background1.jpg);
 
 }

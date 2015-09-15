@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 	<html>
 	<head>
 	    
@@ -16,7 +16,7 @@
 		 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	</head>
-	<body ng-app="myApp" ng-init="status=true">
+	<body ng-app="myApp" ng-init="status=true" ng-controller="myCtrl">
 
 		<nav class="navbar navbar-default ">
   <div class="container-fluid">
@@ -25,12 +25,13 @@
     </div>
     <div>
       <ul class="nav navbar-nav">
-      	<li id="btn3" onclick="formvisible()" class= "glyphicon glyphicon-th-list"></li>
-      	<li id="btn4" onclick="formhide()" class= "glyphicon glyphicon-remove"></li>
+      	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Page 1</a></li>
         <li><a href="#">Page 2</a></li> 
         <li><a href="#">Page 3</a></li> 
+        
+
       </ul>
     </div>
   </div>
@@ -181,6 +182,7 @@
 								</div>
 								</div>
 	                            </div>
+	                        </div>
 
 	                            <div class="row clearfix">
 							<div class="col-xs-3 ">
@@ -201,7 +203,7 @@
 
 	                           
 
-					</div>
+				
 					<br>
 					<div class="remove">
 	                     <button id="bt1" type="button" class="btn btn-primary btn-lg" onclick="createJSON()"><span class="glyphicon glyphicon-upload"></span> UPLOAD</button>
@@ -226,8 +228,18 @@
 
 	</div>
 
-	<div class="col-md-6">
-	 <form class="form black" name="myform" ng-show="status" novalidate>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+      	<form class="form black" name="myform" ng-show="status" novalidate>
 	        <div class="main1"ng-show="status">
 	        	<div class="row">
         		<div class="col-md-12">
@@ -278,7 +290,7 @@
 	                        <th class="r6">Percentage</th>
 	                        <th class="r6">Passing Year</th>
 	                    </tr>
-	                    <tr>
+	                    <tr class="k">
 	                        <td class="r6"><input id="course0" type="text" required ng-model="input.course[0]"></td>
 	                        <td class="r6"><input id="college0" type="text" required ng-model="input.school[0]"></td>
 	                        <td class="r6"><input id="board0" type="text" required ng-model="input.board[0]"></td>
@@ -391,6 +403,17 @@
 	              
 	  
 	    </form>
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	<div class="col-md-6">
+	 
 </div>
 
 	<!--form over -->
@@ -400,7 +423,9 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+
 	$("#btn4").hide();
+	$( ".edutable" ).clone().appendTo( "edutable" );
 /*
 	if ($(window).width() <946) {
 		$(".main").css({"max-width":"729px"})
@@ -459,7 +484,9 @@ $(".form").css({"display":"block"})
 $("#btn4").show();
 $("#btn3").hide();
 
+
 			}
+
 
 			function formhide(){
 				
@@ -483,6 +510,8 @@ $("#btn3").hide();
   );
  $("#btn3").show();
 $("#btn4").hide();
+
+
  
   
 
@@ -494,7 +523,7 @@ $("#btn4").hide();
              var app = angular.module('myApp', []);
 app.controller('myCtrl', ['$scope', function($scope) {
  
-  	
+  	//$scope.characters=5;
 
   	
  

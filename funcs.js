@@ -1,4 +1,4 @@
-Parse.initialize("VWKjOD7HOPdKCxCfICzyBRE2nu2g5k9KHGlMP7SZ", "nSVehOCLGFKkJnEaIfcrBqIxfjFOACAbcYGuaS5P");
+Parse.initialize("1lRkVkAfr6Daum7wITXFrFyk8GlCbBwx8soPwnAR", "PzbJSDOdw0ZlMHWj5x9umDB4XgqsPenbWxZrxooy");
  
  function jsonedu()
  {
