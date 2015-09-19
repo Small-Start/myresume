@@ -1,0 +1,10 @@
+#heading{
+background-color: white;
+font-family: 'Fauna One', serif;
+}
+#sub,#btn{
+	display: inline-block;
+}
+.fields{
+	float: left;
+}
