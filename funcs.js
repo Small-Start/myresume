@@ -204,7 +204,7 @@ if(!$("#event2").val()=="")
 	var hobby=$("#hobby").val();
 	var res=Parse.Object.extend("resumedb");
 	var query1=new res();
-	query1.save({"name":name,"email":email,"contact":contact,"education":jsonEd,"technical": technical,"projects":jsonPr,"internships":jsonIn,"extra":jsonEx,"hobby":hobby},{"success":function(object){console.log("success")},"error":function(object,e){console.log(e)}})
+	query1.save({"name":name,"email":email,"contact":contact,"education":jsonEd,"technical": technical,"projects":jsonPr,"internships":jsonIn,"extra":jsonEx,"hobby":hobby,"username":Parse.User.current().id},{"success":function(object){console.log("success")},"error":function(object,e){console.log(e)}})
 	
 } 
 function winprint()

@@ -1,0 +1,59 @@
+
+1 Answer
+active
+oldest
+votes
+up vote
+0
+down vote
+	
+
+I was able to solve my problem by storing the userid in a cookie instead of relying on Parse.User.current(). I essentially just followed the steps outlined in http://www.w3schools.com/js/js_cookies.asp and since the login function I was using has a callback with the object, I could easily get the user's id when they log in using user.id.
+
+ function setCookie(cname, cvalue, exdays) {
+     var d = new Date();
+     d.setTime(d.getTime() + (exdays*24*60*60*1000));
+     var expires = "expires="+d.toUTCString();
+     document.cookie = cname + "=" + cvalue + "; " + expires;
+ }
+
+ function getCookie(cname) {
+     var name = cname + "=";
+     var ca = document.cookie.split(';');
+     for(var i=0; i<ca.length; i++) {
+         var c = ca[i];
+         while (c.charAt(0)==' ') c = c.substring(1);
+         if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+     }
+     return "";
+ }
+
+ function checkCookie() {
+     var user = getCookie("userid");
+     if (user != "") {
+         //stay on page
+     } else {
+         window.location.href="login-url";
+     }
+ }
+
+ function removeCookie() {
+      setCookie("userid", "", -1); //setting the userid to an empty string 
+      //and setting the expiration time to have passed
+ }
+
+On the login and signup callback, I set the cookie and then redirect to the main page
+
+ setCookie('userid', user.id, 1);
+ window.location.href="main-page-url";
+
+On all pages that require a user to be logged in, I check the cookie by calling checkCookie(); in the <head>. On the signin page, I also have a redirect so that if the user is signed in, they are redirected to the main page. This function is the same as checkCookie(), but I redirect when there is a user instead of when there is not one.
+
+ function checkCookie() {
+     var user = getCookie("userid");
+     if (user != "") {
+         window.location.href="main-page-url";
+     }
+ }
+
+When the user logs out, I still call Parse.User.logOut(); but I also call removeCookie(); before redirecting to the log in screen
