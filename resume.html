@@ -51,7 +51,7 @@
 								<img  class="img-responsive" src="profile.jpg">
 							</div>
 							<div class="col-xs-10">
-								<div class="name"><h1>{{input.name}}</h1></div>
+								<div class="name" ng-init="input.name"><h1>{{input.name}}</h1></div>
 							</div>
 								<div class="row clearfix personaldetails ">
 									<div class="col-xs-12">
@@ -226,7 +226,7 @@
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-      	<form class="form #ffa726 orange.lighten-5 " name="myform" ng-show="status" novalidate>
+      	<form class="form #ffa726 orange.lighten-5 " name="myform" ng-show="status" novalidate v>
 	        <div class="main1"ng-show="status">
 	        	<div class="row">
         		<div class="col-md-12">
@@ -246,16 +246,16 @@
 	                    <tr>
 	                    	<div class="input-field col s12">
 	                        <td class="r6">Name </td>
-	                        <td class="r6"><input type="text" id="name" class="bg" placeholder="Name" required ng-model="input.name"></td>
+	                        <td class="r6"><input type="text" id="name" class="bg" placeholder="Name" required ng-model="input.name"  name="name" value=""></td>
 	                        </div>
 	                    </tr>
 	                    <tr>
 	                        <td class="r6"> Email Id</td>
-	                        <td colspan="1" class="r6"><input type="email" id="email" class="bg" placeholder="example@domain.com" ng-model="input.email" required></td>
+	                        <td colspan="1" class="r6"><input type="email" id="email" class="bg" placeholder="example@domain.com" ng-model="input.email" name="email" required></td>
 	                    </tr>
 	                    <tr>
 	                        <td class="r6"> Contact</td>
-	                        <td class="r6"><input type="number" id="contact" class="bg" placeholder="Mobile Number" min="1" required ng-model="input.contact" ></td>
+	                        <td class="r6"><input type="number" id="contact" class="bg" placeholder="Mobile Number" min="1" name="contact" required ng-model="input.contact" ></td>
 	                    </tr>
 	                </table>
 
@@ -278,11 +278,11 @@
 	                        <th class="r6">Passing Year</th>
 	                    </tr>
 	                    <tr class="k">
-	                        <td class="r6"><input id="course0"  class="bg" type="text" required ng-model="input.course[0]"></td>
-	                        <td class="r6"><input id="college0"  class="bg" type="text" required ng-model="input.school[0]"></td>
-	                        <td class="r6"><input id="board0"  class="bg" type="text" required ng-model="input.board[0]"></td>
-	                        <td class="r6"><input  id="percent0"  class="bg" type="text" required ng-model="input.percentage[0]"></td>
-	                        <td class="r6"><input id="pyear0" class="bg"  type="text"  required ng-model="input.passingyear[0]"></td>
+	                        <td class="r6"><input id="course0"  class="bg" type="text" required ng-model="input.course[0]" name="course0"></td>
+	                        <td class="r6"><input id="college0"  class="bg" type="text" required ng-model="input.school[0]" name="college0"></td>
+	                        <td class="r6"><input id="board0"  class="bg" type="text" required ng-model="input.board[0]" name="board0"></td>
+	                        <td class="r6"><input  id="percent0"  class="bg" type="text" required ng-model="input.percentage[0]" name="percent0"></td>
+	                        <td class="r6"><input id="pyear0" class="bg"  type="text"  required ng-model="input.passingyear[0]" name="pyear0"></td>
 	                    </tr>
 						<tr>
 							<td class="r6"><input id="course1"  class="bg" type="text"  ng-model="input.course[1]"></td>
@@ -325,7 +325,7 @@
 	                    <tr>
 	                        <td class="r6"><input id="title1" type="text"ng-model="input.title[1]"></td>
 	                        <td class="r6"><input id="technology1"type="text"ng-model="input.technology[1]"></td>
-	                        <td class="r6" colspan="2"><textarea id="description1"ng-model="input.description[1]"</textarea></td>
+	                        <td class="r6" colspan="2"><textarea id="description1"ng-model="input.description[1]"></textarea></td>
 	                    </tr>
 	                    <tr>
 	                        <td class="r6"><input id="title2" type="text"ng-model="input.title[2]"></td>
