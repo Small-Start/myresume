@@ -189,22 +189,51 @@ if(!$("#event2").val()=="")
 
 
   function createJSON() {
-  console.log("hello")
+  console.log("hello");
 
 	var name=$("#name").val();
 	var email=$("#email").val();
 	var contact=parseInt($("#contact").val());
 	console.log(name);
-	console.log(email)
+	console.log(email);
 	jsonedu();
 	var technical=$("#technical").val();
 	jsonpro();
 	jsonintern();
 	jsonextra();
 	var hobby=$("#hobby").val();
+	var resumedb = Parse.Object.extend("resumedb");
+var query = new Parse.Query(resumedb);
+query.equalTo("username", Parse.User.current().id);
+query.first({
+  success: function(object) {
+	  if (object) {
+          console.log("updating values of"+Parse.User.current().id);
+		   object.save(null, {
+                                success: function (object) {
+									object.set('name', name);
+                                   object.set('email',email);
+                                   object.set('contact',contact);
+								   object.set('education',jsonEd);
+								   object.set('technical',technical);
+								   object.set('projects',jsonPr);
+								   object.set('internships',jsonIn);
+								   object.set('extra',jsonEx);
+								   object.set('hobby',hobby);
+                               object.save();
+                                    location.reload();
+                                }
+                            });
+        } else {
 	var res=Parse.Object.extend("resumedb");
 	var query1=new res();
 	query1.save({"name":name,"email":email,"contact":contact,"education":jsonEd,"technical": technical,"projects":jsonPr,"internships":jsonIn,"extra":jsonEx,"hobby":hobby,"username":Parse.User.current().id},{"success":function(object){console.log("success")},"error":function(object,e){console.log(e)}})
+		}
+		},
+		error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
 	
 } 
 function winprint()
