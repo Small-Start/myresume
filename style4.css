@@ -3,18 +3,15 @@ img.img-responsive {
 border-radius: 50%;
 width:140px!important;
 height:140px!important;
-margin-top: 4%;
-margin-left: 34%;
-margin-top:4%;
-padding-bottom:4%;
+display:block;
+margin:0 auto;
+margin-top:11%;
 
 
 }
-body{
-	height:60px;
-}
+
 .main{
-margin-top:8%;
+margin-top:4%;
 margin-left:auto;
 margin-right:auto;
 background-color:#e0e0e0;
@@ -22,7 +19,7 @@ z-index:95;
 font-family: Rockwell,"Courier New", Courier, "Lucida Console", Monaco, monospace,
                  Times, "Times New Roman", serif;
 position: relative;
-
+padding:1%;
 }
 /*Deepti.....added a class bg*/
 .bg
@@ -83,7 +80,7 @@ li{
 .education{
 	margin-top: 0%;
 	margin-left: 0%;
-	width:1200px;
+
 }
 .r6{
 	color:black;
@@ -110,14 +107,22 @@ color:black;
 font-style:italic;
 font-family: Courier New;
 }
+.maindetails{
+	color:black;
+}
+hr.black{
+	border-color:black;
+
+	border-top: 1px dotted #8c8b8b;
+
+
+}
 
 .edu,.technicalskills{
 	font-weight: bolder;
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	margin-top: 15%;
-	margin-bottom:15%;
 	font-size: 20px;
 }
 .work-experience,.technicalskills{
@@ -195,5 +200,9 @@ cursor:pointer;
 .r7{
 
 	background-color: black;
+}
+button.head.btn.btn-info.btn-sm{
+	margin:2%;
+    
 }
 /* Deepti */

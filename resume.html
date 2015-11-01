@@ -13,6 +13,7 @@
 <script src="login.js" type="text/javascript"></script>
 	<link rel="stylesheet" type="text/css" href="style4.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="print.css">
 </head>
 <body ng-app="myApp" ng-init="status=true" ng-controller="myCtrl" onload="value()">
 	<nav class="navbar navbar-default ">
@@ -21,7 +22,8 @@
     		</div>
     		<div>
       			<ul class="nav navbar-nav">
-      				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+      				<div class="row">
+      				<div class="col-md-4 col-xs-4 col-sm-4"><button type="button" class="head btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Open Modal</button></div>
         					<!-- Deepti....removed home button, page 1-3 button-->
         					<!--<li class="active">-->
         					<!-- <a href="#">Home</a></li>
@@ -29,9 +31,10 @@
         					<li><a href="#">Page 2</a></li> 
         					<li><a href="#">Page 3</a></li> -->
  		 					<!-- Deepti....removed home button, page 1-3 button-->
-							<div class="pull-right"><button type="button" onclick="logo()" class="btn btn-info btn-lg">Log Out</button></div>
-							
+						<div class="pull-right col-md-4 col-xs-8 col-sm-4"><button type="button" onclick="logo()" class="head btn btn-info btn-sm">Log Out</button></div>
+						</div>	
         		</ul>
+        	</div>
     		</div>
   		</div>
 	</nav>
@@ -47,51 +50,54 @@
 				<div class="visible">
 	           		<div class="main r3" >
 						<div class ="row clearfix r1 r3">						
-						<div class="col-xs-2">
+						<div class="col-md-2 col-sm-12 col-xs-12">
 								<img  class="img-responsive" src="profile.jpg">
 							</div>
-							<div class="col-xs-10">
+							<div class="col-xs-12 col-md-10 col-sm-12">
 								<div class="name"><h1>{{input.name}}</h1></div>
 							</div>
 								<div class="row clearfix personaldetails ">
-									<div class="col-xs-12">
-										<div class="col-xs-4"></div>
-										<div class="col-xs-4">EMAIL: {{input.email}}</div>
-										<div class="col-xs-4">CONTACT NUMBER: {{input.contact}}</div>
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<div class="text-center col-xs-12  col-sm-12 col-md-4"></div>
+										<div class="text-center col-xs-12  col-sm-12 col-md-4">EMAIL: {{input.email}}</div>
+										<div class="text-center col-xs-12  col-sm-12 col-md-4">CONTACT NUMBER: {{input.contact}}</div>
 									</div>
 								</div>
 		             		</div>
 
 				 <div class="education">
 				 	  <div class="row clearfix">
-				 	  	<div class="col-xs-3">
+				 	  	<div class="col-xs-12 col-md-3 col-sm-12">
 				 	  		<div class="row 1 clearfix">
-				 	  			<div class="col-xs-2"><img src=""></div>
-				 	  			<div class="col-xs-10 edu r2 r5">Education</div>
+				 	  			<div class="col-xs-2 col-md-2 col-sm-2"><img src=""></div>
+				 	  			<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Education</div>
 				 	  		</div>
 				 	  		
 				 	  	</div>
-				 	  	<div class="col-xs-9 details">
-				 	  		<div class="row clearfix 4 ">
-				 	  			<div class="col-xs-3 degree"><span class="r4">{{input.course[0]}}</span></div>
-				 	  			<div class="col-xs-3 university"><span class="r4">{{input.school[0]}}</span></div>
-				 	  			<div class="col-xs-2 board"><span class="r4">{{input.board[0]}}</span></div>
-				 	  			<div class="col-xs-2 percentage"><span class="r4">{{input.percentage[0]}}</span></div>
-				 	  			<div class="col-xs-2 percentage"><span class="r4">{{input.passingyear[0]}}</span></div>
+				 	  	<div class="col-xs-12 col-md-9 col-sm-12 details">
+				 	  		<div class=" maindetails text-center row clearfix 4 ">
+				 	  			<div class="col-md-3 col-xs-12 col-sm-12"><h6>COURSE:</h6><br><span class="r4">{{input.course[0]}}</span></div>
+				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>SCHOOL:</h6><br><span class="r4">{{input.school[0]}}</span></div>
+				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>BOARD:</h6><br><span class="r4">{{input.board[0]}}</span></div>
+				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PERCENTAGE:</h6><br><span class="r4">{{input.percentage[0]}}</span></div>
+				 	  			<div class="col-md-2 col-xs-12 col-sm-12"><h6>PASSINGYEAR:</h6><br><span class="r4">{{input.passingyear[0]}}</span></div>
 				 	  		</div>
-				 	  		<div class="row clearfix 4">
-				 	  			<div class="col-xs-3 degree"><span class="r4">{{input.course[1]}}</span></div>
-				 	  			<div class="col-xs-3 university"><span class="r4">{{input.school[1]}}</span></div>
-				 	  			<div class="col-xs-2 board"><span class="r4">{{input.board[1]}}</span></div>
-				 	  			<div class="col-xs-2 percentage"><span class="r4">{{input.percentage[1]}}</span></div>
-				 	  				<div class="col-xs-2 passingyear"><span class="r4">{{input.passingyear[1]}}</span></div>
+				 	  		<hr class="black">
+				 	  		<div class="maindetails text-center row clearfix 4">
+				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>COURSE:</h6><br><span class="r4">{{input.course[1]}}</span></div>
+				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>SCHOOL:</h6><br><span class="r4">{{input.school[1]}}</span></div>
+				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>BOARD:</h6><br><span class="r4">{{input.board[1]}}</span></div>
+				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PERCENTAGE:</h6><br><span class="r4">{{input.percentage[1]}}</span></div>
+				 	  				<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PASSINGYEAR:</h6><br><span class="r4">{{input.passingyear[1]}}</span></div>
 				 	  		</div>
-				 	  		<div class="row clearfix 4">
-				 	  			<div class="col-xs-3 degree"><span class="r4">{{input.course[2]}}</span></div>
-				 	  			<div class="col-xs-3 university"><span class="r4">{{input.school[2]}}</span></div>
-				 	  			<div class="col-xs-2 board"><span class="r4">{{input.board[2]}}</span></div>
-				 	  				<div class="col-xs-2 percentage"><span class="r4">{{input.percentage[2]}}</span></div>
-				 	  				<div class="col-xs-2 passingyear"><span class="r4">{{input.passingyear[2]}}</span></div>
+
+				 	  		<hr class="black">
+				 	  		<div class="maindetails text-center row clearfix 4">
+				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>COURSE:</h6><br><span class="r4">{{input.course[2]}}</span></div>
+				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>SCHOOL:</h6><br><span class="r4">{{input.school[2]}}</span></div>
+				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>BOARD:</h6><br><span class="r4">{{input.board[2]}}</span></div>
+				 	  				<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PERCENTAGE:</h6><br><span class="r4">{{input.percentage[2]}}</span></div>
+				 	  				<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PASSINGYEAR:</h6><br><span class="r4">{{input.passingyear[2]}}</span></div>
 
 				 	  		</div>
 				                
@@ -106,28 +112,30 @@
 
 					<div class="education">
 						<div class="row clearfix">
-							<div class="col-xs-3">
+							<div class="maindetails col-md-3 col-sm-12 col-xs-12">
 								<div class="row 1 clearfix">
 									<div class="col-xs-2"><img src=""></div>
-									<div class="col-xs-10 edu r2 r5">Extra Activties</div>
+									<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Extra Activties</div>
 								</div>
 
 							</div>
-							<div class="col-xs-9 details">
+							<div class="maindetails text-center  col-md-9 details ">
 								<div class="row clearfix 4 ">
-									<div class="col-xs-4 university"> EVENT:<br><span class="r4">{{input.event[0]}}</span></div>
-									<div class="col-xs-4 university">PLACE:<br><span class="r4">{{input.place[0]}}</span></div>
-									<div class="col-xs-4 percentage"> ROLE:<br><span class="r4">{{input.role[0]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>EVENT:</h6><br><span class="r4">{{input.event[0]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>PLACE:</h6><br><span class="r4">{{input.place[0]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12 "> <h6>ROLE:</h6><br><span class="r4">{{input.role[0]}}</span></div>
 								</div>
+								<hr class="black">
 								<div class="row clearfix 4">
-									<div class="col-xs-4 university"><span class="r4">{{input.event[1]}}</span></div>
-									<div class="col-xs-4 university"><span class="r4">{{input.place[1]}}</span></div>
-									<div class="col-xs-4 percentage"><span class="r4">{{input.role[1]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>EVENT:</h6><br><span class="r4">{{input.event[1]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>PLACE:</h6><br><span class="r4">{{input.place[1]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>ROLE:</h6><br><span class="r4">{{input.role[1]}}</span></div>
 								</div>
+								<hr class="black">
 								<div class="row clearfix 4">
-									<div class="col-xs-4 university"><span class="r4">{{input.event[2]}}</span></div>
-									<div class="col-xs-4 university"><span class="r4">{{input.place[2]}}</span></div>
-									<div class="col-xs-4 percentage"><span class="r4">{{input.role[2]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>EVENT:</h6><span class="r4">{{input.event[2]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>PLACE:</h6><span class="r4">{{input.place[2]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>ROLE:</h6><span class="r4">{{input.role[2]}}</span></div>
 								</div>
 
 	                           
@@ -139,44 +147,53 @@
 	                 <br>
 					<div class="education">
 						<div class="row clearfix">
-							<div class="col-xs-3 ">
+							<div class="maindetails col-md-3 col-sm-12 col-xs-12  ">
 								<div class="row 1 clearfix">
 									<div class="col-xs-2"><img src=""></div>
-									<div class="col-xs-10 edu r2 r5">Work Experience</div>
+									<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Work Experience</div>
 								</div>
 
 							</div>
-							<div class="col-xs-9 details">
-								<div class="row clearfix 4 degree"><h4>Internship</h4>
-									<div class="col-xs-4 university">COMPANY NAME :<br><span class="r4">{{input.company[0]}}</span></div>
+							<div class="maindetails text-center col-md-9 col-sm-12 col-xs-12 details">
+								<div class="row clearfix 4">
+									<div class="row"><h4>Internship</h4></div>
+									<div class="col-xs-12 col-md-4 col-sm-12"><h6>COMPANY NAME :</h6><br><span class="r6">{{input.company[0]}}</span></div>
 								
-									<div class="col-xs-4 university"> DURATION:<br><span class="r4">{{input.duration[0]}}</span></div>
-									<div class="col-xs-4 percentage"> ROLE :<br><span class="r4">{{input.role1[0]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12 "> <h6>DURATION:</h6><br><span class="r6">{{input.duration[0]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12"> <h6>ROLE :</h6><br><span class="r6">{{input.role1[0]}}</span></div>
 								</div>
+								<hr class="black">
 							</div>
-							
-								<div class="col-xs-3"></div>
-								<div class="col-xs-9 details">
-								<div class="row clearfix 4 degree"><h4>Projects</h4>
-								<div class="col-xs-4 university">TITLE :<br>{{input.title[0]}}</div>
+
+							</div>
+
+							     <div class="row clearfix">
+								<div class="maindetails col-xs-12 col-md-3 col-sm-12 "></div>
+								<div class="maindetails text-center col-md-9 col-sm-12 col-xs-12 details  details">
+								<div class="row clearfix 4"><h4>Projects</h4></div>
+                                <div class="row">
+								<div class="col-xs-12 col-md-4 col-sm-12"><h6>TITLE :</h6><br><span class="r6">{{input.title[0]}}</span></div>
 								
-									<div class="col-xs-4 university">TECHNOLOGY:<br>{{input.technology[0]}}</div>
-									<div class="col-xs-4 percentage">DESCRIPTION:<br>{{input.description[0]}}</div>
+									<div class="col-xs-12 col-md-4 col-sm-12"><h6>TECHNOLOGY:</h6><br><span class="r6">{{input.technology[0]}}</span></div>
+									<div class="col-xs-12 col-md-4 col-sm-12"><h6>DESCRIPTION:</h6><br><span class="r6">{{input.description[0]}}</span></div>
+								</div>
 								</div>
 								</div>
 	                            </div>
-	                        </div>
-
+	                        
+                              
 	                            <div class="row clearfix">
-							<div class="col-xs-3 ">
+							<div class="maindetails col-xs-12 col-md-3 col-sm-12 ">
 								<div class="row 1 clearfix">
-									<div class="col-xs-2"><img src=""></div>
-									<div class="col-xs-10 edu r2 r5">Technical Skills</div>
+									<div class="maindetails col-xs-12 col-md-2 col-sm-12 "><img src=""></div>
+									<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Technical Skills</div>
 								</div>
-								<div class="col-xs-9 details">
+							</div>
+								<div class="col-md-9 maindetails col-xs-12 col-sm-12 details">
 								<span class="r4">{{input.technicalskills}}</span>
 										
-								
+								</div>
+							</div>
 								
 							
 						</div>
@@ -189,10 +206,11 @@
 
 				
 					<br>
-					<div class="remove">
-	                     <button id="bt1" type="button" class="btn btn-primary btn-lg" onclick="createJSON()"><span class="glyphicon glyphicon-upload"></span> UPLOAD</button>
-	                     
-		                 <button id="bt2" type="button" class="btn btn-primary btn-lg" onclick="winprint()"><span class="glyphicon glyphicon-print "></span>  PRINT</button>
+					<div class="row remove">
+						<div class="col-md-6 center-block col-xs-6 col-sm-6">
+	                     <button id="bt1" type="button" class="pull-right btn btn-primary btn-lg" onclick="createJSON()"><span class="glyphicon glyphicon-upload"></span> UPLOAD</button></div>
+	                     <div class="col-md-6  col-xs-6 col-sm-6">
+		                 <button id="bt2" type="button" class=" pull-left btn btn-primary btn-lg" onclick="winprint()"><span class="glyphicon glyphicon-print "></span>  PRINT</button></div>
 
 		                
 						</div>
@@ -325,7 +343,7 @@
 	                    <tr>
 	                        <td class="r6"><input id="title1" type="text"ng-model="input.title[1]"></td>
 	                        <td class="r6"><input id="technology1"type="text"ng-model="input.technology[1]"></td>
-	                        <td class="r6" colspan="2"><textarea id="description1"ng-model="input.description[1]"</textarea></td>
+	                        <td class="r6" colspan="2"><textarea id="description1"ng-model="input.description[1]"></textarea></td>
 	                    </tr>
 	                    <tr>
 	                        <td class="r6"><input id="title2" type="text"ng-model="input.title[2]"></td>
