@@ -9,7 +9,9 @@ margin-top:11%;
 
 
 }
-
+.body{
+	word-wrap:break-word;
+}
 .main{
 margin-top:4%;
 margin-left:auto;
@@ -20,6 +22,10 @@ font-family: Rockwell,"Courier New", Courier, "Lucida Console", Monaco, monospac
                  Times, "Times New Roman", serif;
 position: relative;
 padding:1%;
+
+}
+.text-center{
+	word-wrap:break-word;
 }
 /*Deepti.....added a class bg*/
 .bg
@@ -80,12 +86,13 @@ li{
 .education{
 	margin-top: 0%;
 	margin-left: 0%;
-
+word-wrap:break-word;
 }
 .r6{
 	color:black;
 	font-weight: bold;
 	background-color: white;
+	word-wrap:break-word;
 }
 .degree{
 font-weight:bold;
@@ -96,6 +103,7 @@ padding-right: 2%;
 color:black;
 font-style: italic;
 font-family: Courier New;
+word-wrap:break-word;
 }
 .university,.board,.percentage,.passingyear{
 padding-left:1%;
@@ -106,6 +114,7 @@ font-weight: bold;
 color:black;
 font-style:italic;
 font-family: Courier New;
+word-wrap:break-word;
 }
 .maindetails{
 	color:black;
@@ -127,6 +136,7 @@ hr.black{
 }
 .work-experience,.technicalskills{
 	margin-left: 3%;
+	word-wrap:break-word;
 }
 .parameters{
 	margin-left: 25%;
@@ -139,6 +149,7 @@ hr.black{
 	margin-top: 15%;
 	margin-bottom:15%;
 	font-size: 35px;
+	word-wrap:break-word;
 
 }
 .background{
@@ -148,6 +159,7 @@ hr.black{
 	color:#757575;
 	font-family:Minion;	
 	display:inline-block;
+	word-wrap:break-word;
 }
 
 .remove{
@@ -157,7 +169,7 @@ hr.black{
 form{
 	position:relative;
 	z-index:99;
-	
+	word-wrap:break-word;
 
 }
 table#edtable{

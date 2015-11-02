@@ -30,11 +30,11 @@ query.first({
   success: function(object) {
     // The object was retrieved successfully.
 	if (object) {
-		var name = object.get("name");
+		name = object.get("name");
 		var email = object.get("email");
 		var contact = object.get("contact");
 		var technical = object.get("technical");
-		var edu=new Object();
+		
 		var extra=new Object();
 		var intern=new Object();
 		var project=new Object();
@@ -89,6 +89,7 @@ query.first({
 		document.myform.event2.value=extra[2].event;
 		document.myform.place2.value=extra[2].place;
 		document.myform.extrarole2.value=extra[2].exrarole;
+	
 	}
   },
   error: function(object, error) {
@@ -96,8 +97,7 @@ query.first({
     // error is a Parse.Error with an error code and message.
   }
 });	
-}
-					
+}			
 function logo()
 {  
 var currentUser = Parse.User.current();
