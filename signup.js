@@ -13,7 +13,13 @@ if (currentUser) {
 function signu(){
 var user = new Parse.User();
 user.set("username", $("#uname").val());
+
+if($("#password1").val().length>6){
 user.set("password", $("#password1").val());
+}
+else{
+  alert("Password must be greater than 6 characters");
+}
 user.set("email", $("#email1").val());
 user.signUp(null, {
   success: function(user) {
@@ -25,7 +31,12 @@ user.signUp(null, {
   },
   error: function(user, error) {
     // Show the error message somewhere and let the user try again.
-    alert("Error: " + error.code + " " + error.message);
+    if($("#password1").val().length>6){
+       alert("Error: " + error.code + " " + error.message);
+    }
+      else{
+   
+  }
   }
 });
 };

@@ -3,7 +3,7 @@ Parse.initialize("1lRkVkAfr6Daum7wITXFrFyk8GlCbBwx8soPwnAR", "PzbJSDOdw0ZlMHWj5x
  function jsonedu()
  {
 	jsonEd = [];
-        var course = $("#course0").val();
+        var course= $("#course0").val();
         var college = $("#college0").val();
 		var board = $("#board0").val();
 		var percent = $("#percent0").val();
@@ -191,7 +191,7 @@ if(!$("#event2").val()=="")
   function createJSON() {
   console.log("hello");
 
-	var name=$("#name").val();
+	var name=$("#name1").val();
 	var email=$("#email").val();
 	var contact=parseInt($("#contact").val());
 	console.log(name);

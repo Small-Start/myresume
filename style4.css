@@ -9,6 +9,16 @@ margin-top:11%;
 
 
 }
+.navbar{
+	min-height: 80px !important;
+}
+.navbar-default{
+	background-color: #3b3a36;
+}
+.btn-info{
+	background-color:#b3c2bf;
+	border:#e9ece5;
+}
 .body{
 	word-wrap:break-word;
 }
@@ -16,10 +26,9 @@ margin-top:11%;
 margin-top:4%;
 margin-left:auto;
 margin-right:auto;
-background-color:#e0e0e0;
+background-color:#e9ece5;
 z-index:95;
-font-family: Rockwell,"Courier New", Courier, "Lucida Console", Monaco, monospace,
-                 Times, "Times New Roman", serif;
+
 position: relative;
 padding:1%;
 
@@ -52,25 +61,23 @@ padding:1%;
 
 }
 .r1{
-background-color:#82b1ff;
-margin-left:auto;
-margin-right:auto;
+background-color:#b3c2bf;
+
 }
 .r2{
-	color:#82b1ff;
+	color:#3b3a36;
 }
 .r3{
-	color:white;
-	font-family:"Lucida Sans Unicode", Courier,"Gill Sans Extrabold",Grande,"Lucida Console";
+	color:#3b3a36;
+	
 }
 .r5{
-	font-family:"Lucida Sans Unicode", Courier,"Gill Sans Extrabold",Grande,"Lucida Console",monospace;
+	
 }
 
 #edu{
 	font-weight: bold;
-	font-family: Rockwell,"Courier New", Courier, Georgia,
-                 Times, "Times New Roman", serif;
+	
     font-size:20px;
 
 }
@@ -81,7 +88,7 @@ li{
 	margin :0 0 100px 0;
 }
 .details{
-	border-left: 1px solid #82b1ff;
+	border-left:2px solid #c0dfd9;
 }
 .education{
 	margin-top: 0%;
@@ -117,13 +124,11 @@ font-family: Courier New;
 word-wrap:break-word;
 }
 .maindetails{
-	color:black;
+	color:#3b3a36;
+	font-size:15px;
 }
 hr.black{
-	border-color:black;
-
-	border-top: 1px dotted #8c8b8b;
-
+border:1px solid #c0dfd9;
 
 }
 
@@ -153,7 +158,7 @@ hr.black{
 
 }
 .background{
-	background-color:#E0E0E0;
+	background-color:#e9ece5;
 }
 .r4{
 	color:#757575;

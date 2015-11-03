@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html class="loading">
 <head>
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="bootstrap.min.css">
+	
 	<script src="https://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="materialize.css">
 	<script src="jquery.min.js"></script>
@@ -11,11 +11,51 @@
 	<script type="text/javascript" src="funcs.js"></script>
 	
 <script src="login.js" type="text/javascript"></script>
+<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style4.css">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
 	<link rel="stylesheet" type="text/css" href="print.css">
-</head>
-<body ng-app="myApp" ng-init="status=true" ng-controller="myCtrl" onload="value()">
+	</head>
+<style>
+html {
+    -webkit-transition: background-color 1s;
+    transition: background-color 1s;
+}
+.h6, h6{
+	font-size:16px !important;
+}
+html, body {
+    /* For the loading indicator to be vertically centered ensure */
+    /* the html and body elements take up the full viewport */
+
+    font-family: 'Roboto', sans-serif;
+    
+}   
+html.loading {
+    /* Replace #333 with the background-color of your choice */
+    /* Replace loading.gif with the loading image of your choice */
+    background:  url('loader.gif') no-repeat 50% 50%;
+
+    /* Ensures that the transition only runs in one direction */
+    -webkit-transition: background-color 0;
+    transition: background-color 0;
+}
+body {
+    -webkit-transition: opacity 1s ease-in;
+    transition: opacity 1s ease-in;
+}
+html.loading body {
+    /* Make the contents of the body opaque during loading */
+    opacity: 0;
+
+    /* Ensures that the transition only runs in one direction */
+    -webkit-transition: opacity 0;
+    transition: opacity 0;
+}
+
+</style>
+<body ng-cloak ng-app="myApp" ng-init="status=true" ng-controller="myCtrl" onload="value()">
 	<nav class="navbar navbar-default ">
   		<div class="container-fluid">
     		<div class="navbar-header">
@@ -47,11 +87,12 @@
 	           		<div class="main" >
 						<div class ="row clearfix r1 r3">						
 						<div class="col-md-2 col-sm-12 col-xs-12">
-								<img  class="img-responsive" src="profile.jpg">
+								
+<canvas id="imageCanvas" class='img-responsive' style="padding:5% ;margin:2%;border-top:10%;border-top:10%"></canvas>
 							</div>
 
 							<div class="col-xs-12 col-md-10 col-sm-12">
-								<div class="text-center "><h1>{{input.name}}</h1></div>
+								<div class="text-center "><h1>{{input.name1}}</h1></div>
                              </div>
 						
 								<div class="row clearfix personaldetails ">
@@ -75,16 +116,17 @@
 				 	  		
 				 	  	</div>
 				 	  	<div class="col-xs-12 col-md-9 col-sm-12 details">
-				 	  		<div class=" maindetails text-center row clearfix 4 ">
-				 	  			<div class="col-md-3 col-xs-12 col-sm-12"><h6>COURSE:</h6><br><span >{{input.course[0]}}</span></div>
+				 	  		<div  class=" maindetails text-center row clearfix 4 ">
+				 	  			<div  class="col-md-3 col-xs-12 col-sm-12"><h6>COURSE:</h6><br><span >{{input.course[0]}}</span></div>
 				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>SCHOOL:</h6><br><span >{{input.school[0]}}</span></div>
 				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>BOARD:</h6><br><span >{{input.board[0]}}</span></div>
 				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PERCENTAGE:</h6><br><span>{{input.percentage[0]}}</span></div>
 				 	  			<div class="col-md-2 col-xs-12 col-sm-12"><h6>PASSING YEAR:</h6><br><span >{{input.passingyear[0]}}</span></div>
+				 	  			
 				 	  		</div>
 				 	  		<hr class="black">
 				 	  		<div class="maindetails text-center row clearfix 4">
-				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>COURSE:</h6><br><span >{{input.course[1]}}</span></div>
+				 	  			<div  class="col-md-3 col-xs-12 col-sm-12 "><h6>COURSE:</h6><br><span >{{input.course[1]}}</span></div>
 				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>SCHOOL:</h6><br><span >{{input.school[1]}}</span></div>
 				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>BOARD:</h6><br><span >{{input.board[1]}}</span></div>
 				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PERCENTAGE:</h6><br><span >{{input.percentage[1]}}</span></div>
@@ -120,19 +162,21 @@
 
 							</div>
 							<div class="maindetails text-center  col-md-9 details ">
-								<div class="row clearfix 4 ">
+								<div  class="row clearfix 4 ">
 									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>EVENT:</h6><br><span class="text-center">{{input.event[0]}}</span></div>
 									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>PLACE:</h6><br><span class="text-center">{{input.place[0]}}</span></div>
 									<div class="col-xs-12 col-md-4 col-sm-12 "> <h6>ROLE:</h6><br><span class="text-center">{{input.role[0]}}</span></div>
+
 								</div>
-								<hr class="black">
-								<div class="row clearfix 4">
+								<div><hr class="black"></div>
+								<div ng-show="emptyevent1" class="row clearfix 4">
 									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>EVENT:</h6><br><span class="text-center">{{input.event[1]}}</span></div>
 									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>PLACE:</h6><br><span class="text-center">{{input.place[1]}}</span></div>
 									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>ROLE:</h6><br><span class="text-center">{{input.role[1]}}</span></div>
+									
 								</div>
-								<hr class="black">
-								<div class="row clearfix 4">
+								<div ng-show="emptyevent1"><hr class="black"></div>
+								<div ng-show="emptyevent2" class="row clearfix 4">
 									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>EVENT:</h6><span class="text-center">{{input.event[2]}}</span></div>
 									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>PLACE:</h6><span class="text-center">{{input.place[2]}}</span></div>
 									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>ROLE:</h6><span class="text-center">{{input.role[2]}}</span></div>
@@ -155,19 +199,19 @@
 
 							</div>
 							<div class="maindetails text-center col-md-9 col-sm-12 col-xs-12 details">
-								<div class="row clearfix 4">
+								<div ng-show="internship" class="row clearfix 4">
 									<div class="row"><h4>Internship</h4></div>
 									<div class="col-xs-12 col-md-4 col-sm-12"><h6>COMPANY NAME :</h6><br><span class="text-center">{{input.company[0]}}</span></div>
 								
 									<div class="col-xs-12 col-md-4 col-sm-12 "> <h6>DURATION:</h6><br><span class="text-center">{{input.duration[0]}}</span></div>
 									<div class="col-xs-12 col-md-4 col-sm-12"> <h6>ROLE :</h6><br><span class="text-center">{{input.role1[0]}}</span></div>
 								</div>
-								<hr class="black">
+								<div ng-show="internship"><hr class="black"></div>
 							</div>
 
 							</div>
 
-							     <div class="row clearfix">
+							     <div  ng-show="project" class="row clearfix">
 								<div class="maindetails col-xs-12 col-md-3 col-sm-12 "></div>
 								<div class="maindetails text-center col-md-9 col-sm-12 col-xs-12 details  details">
 								<div class="row clearfix 4"><h4>Projects</h4></div>
@@ -177,8 +221,11 @@
 									<div class="col-xs-12 col-md-4 col-sm-12"><h6>TECHNOLOGY:</h6><br><span class="text-center">{{input.technology[0]}}</span></div>
 									<div class="col-xs-12 col-md-4 col-sm-12"><h6>DESCRIPTION:</h6><br><span class="text-center">{{input.description[0]}}</span></div>
 								</div>
+								<hr class="black">
 								</div>
+
 								</div>
+
 	                            </div>
 	                        
                               
@@ -265,16 +312,20 @@
 	                    <tr>
 	                    	<div class="input-field col s12">
 	                        <td class="r6">Name </td>
-	                        <td class="r6"><input type="text" id="name" class="bg" placeholder="Name" required ng-model="input.name"  name="name" value=""></td>
+	                        <td class="r6"><input type="text" id="name1" class="bg" placeholder="Name" required ng-model="input.name1"  name="name1" value=""></td>
 	                        </div>
 	                    </tr>
 	                    <tr>
 	                        <td class="r6"> Email Id</td>
-	                        <td colspan="1" class="r6"><input type="email" id="email" class="bg" placeholder="example@domain.com" ng-model="input.email" name="email" required></td>
+	                        <td colspan="1" class="r6"><input type="email" id="email" class="bg" placeholder="example@domain.com" ng-model="input.email" name="email" value="email" required></td>
 	                    </tr>
 	                    <tr>
 	                        <td class="r6"> Contact</td>
-	                        <td class="r6"><input type="number" id="contact" class="bg" placeholder="Mobile Number" min="1" name="contact" required ng-model="input.contact" ></td>
+	                        <td class="r6"><input type="text" id="contact" class="bg" placeholder="Mobile Number" min="1" name="contact" value="contact" required ng-model="input.contact" ></td>
+	                    </tr>
+	                    <tr>
+	                    	<label>Image File:</label><br/>
+<input type="file" id="imageLoader" name="imageLoader"/>
 	                    </tr>
 	                </table>
                          </div>
@@ -297,14 +348,14 @@
 	                        <th class="r6">Passing Year</th>
 	                    </tr>
 	                    <tr class="k">
-	                        <td class="r6"><input id="course0"  class="bg" type="text" required ng-model="input.course[0]" name="course0"></td>
-	                        <td class="r6"><input id="college0"  class="bg" type="text" required ng-model="input.school[0]" name="college0"></td>
+	                        <td class="r6"><input id="course0"  class="bg" type="text" required ng-model="input.course[0]" name="course0" value="course0" ></td>
+	                        <td class="r6"><input id="college0"  class="bg" type="text" required ng-model="input.school[0]" name="college0" ></td>
 	                        <td class="r6"><input id="board0"  class="bg" type="text" required ng-model="input.board[0]" name="board0"></td>
 	                        <td class="r6"><input  id="percent0"  class="bg" type="text" required ng-model="input.percentage[0]" name="percent0"></td>
 	                        <td class="r6"><input id="pyear0" class="bg"  type="text"  required ng-model="input.passingyear[0]" name="pyear0"></td>
 	                    </tr>
 						<tr>
-							<td class="r6"><input id="course1"  class="bg" type="text"  ng-model="input.course[1]"></td>
+							<td class="r6"><input id="course1"  class="bg" type="text"  ng-model="input.course[1]" ></td>
 							<td class="r6"><input id="college1"  class="bg" type="text"  ng-model="input.school[1]"></td>
 							<td class="r6"><input id="board1"  class="bg" type="text"  ng-model="input.board[1]"></td>
 							<td class="r6"><input id="percent1"type="text" class="bg"   ng-model="input.percentage[1]"></td>
@@ -434,7 +485,10 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
+window.setTimeout(function(){
 
+	$( "html" ).removeClass( "loading" );
+}, 10000);
 	$("#btn4").hide();
 	$( ".edutable" ).clone().appendTo( "edutable" );
 /*
@@ -527,11 +581,131 @@ $("#btn4").hide();
   
 
 			}
+var imageLoader = document.getElementById('imageLoader');
+    imageLoader.addEventListener('change', handleImage, false);
+var canvas = document.getElementById('imageCanvas');
+var ctx = canvas.getContext('2d');
+
+
+function handleImage(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img,0,0);
+        }
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);     
+}
+
+console.log(name);
 
 
              var app = angular.module('myApp', []);
 app.controller('myCtrl', ['$scope', function($scope) {
   console.log("hello");
+  console.log(email);
+  setTimeout(function() {
+  	
+  	$scope.input={};
+  	 	$scope.input.name1={};
+  	$scope.input.course={};
+  	$scope.input.school={};
+  	$scope.input.board={};
+  	$scope.input.percentage={};
+  	$scope.project=true;
+  	$scope.input.title={};
+  		$scope.input.passingyear={};
+  		$scope.input.technology={};
+  		$scope.input.description={};
+  		$scope.input.company={};
+  		$scope.input.duration={};
+  		$scope.input.role1={};
+  		$scope.input.event={};
+  		$scope.input.place={};
+  		$scope.input.role={};
+  		$scope.emptyevent0=true;
+  		$scope.emptyevent1=true;
+  		$scope.emptyevent2=true;
+  		$scope.internship=true;
+    $scope.input.name1=name1.value;
+$scope.input.email=email.value;
+$scope.input.contact=contact.value;
+ $scope.input.course[0]=course0.value;
+  $scope.input.course[1]=course1.value;
+    $scope.input.course[2]=course2.value;
+     $scope.input.school[0]=college0.value;
+     $scope.input.school[1]=college1.value;
+$scope.input.school[2]=college2.value;
+   $scope.input.board[0]=board0.value;
+    $scope.input.board[1]=board1.value;
+    $scope.input.board[2]=board2.value;
+     $scope.input.percentage[0]=percent0.value;
+      $scope.input.percentage[1]=percent1.value;
+       $scope.input.percentage[2]=percent2.value;
+       $scope.input.passingyear[0]=pyear0.value;
+       $scope.input.passingyear[1]=pyear1.value;
+       $scope.input.passingyear[2]=pyear2.value;
+     $scope.input.title[0]=title0.value;
+      $scope.input.title[1]=title1.value;
+       $scope.input.title[2]=title2.value;
+  $scope.input.technology[0]=technology0.value;
+   $scope.input.technology[1]=technology1.value;
+ $scope.input.technology[2]=technology2.value;
+ $scope.input.description[0]=description0.value;
+   $scope.input.description[1]=description1.value;
+ $scope.input.description[2]=description2.value;
+$scope.input.company[0]=company0.value;
+$scope.input.duration[0]=duration0.value;
+$scope.input.role1[0]=role0.value;
+$scope.input.event[0]=event0.value;
+$scope.input.event[1]=event1.value
+$scope.input.event[2]=event2.value;
+$scope.input.place[0]=place0.value;
+$scope.input.place[1]=place1.value;
+$scope.input.place[2]=place2.value;
+$scope.input.role[0]=extrarole0.value;
+$scope.input.role[1]=extrarole1.value;
+$scope.input.role[2]=extrarole2.value;
+$scope.input.technicalskills=technical.value;
+console.log(course0.value);
+
+if(event2.value==""||place2.value==""||extrarole2.value==""){
+	$scope.emptyevent2=false;
+   
+}
+else{
+		$scope.emptyevent1=true;
+}
+
+if(event1.value==""||place1.value==""||extrarole1.value==""){
+	$scope.emptyevent1=false;
+	
+}
+else{
+		$scope.emptyevent1=true;
+}
+if(company0.value==""||duration0.value==""||role0.value==""){
+	$scope.internship=false;
+  
+}
+else{
+		$scope.internship=true;
+}
+if(title0.value==""||technology0.value==""||description0.value==""){
+	$scope.project=false;
+  
+}
+else{
+		$scope.project=true;
+}
+
+    $scope.$apply(); //this triggers a $digest
+  },10000);
+  
 
   	//$scope.characters=5;
 

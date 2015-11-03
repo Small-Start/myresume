@@ -9,39 +9,25 @@ if (currentUser) {
 	console.log("success");
 	console.log(Parse.User.current().id);
 	alogi();
-	retrieve();
-}
- else {
-    // show the signup or login page
-	console.log("fail");
-	
-	alert("please login to continue");
-	window.location.href="index.html";
-	
- }	
-	
-}
-function retrieve()
-{
-var retrieve= Parse.Object.extend("resumedb");
+	var retrieve= Parse.Object.extend("resumedb");
 var query = new Parse.Query(retrieve);
 query.equalTo("username", Parse.User.current().id);
 query.first({
   success: function(object) {
     // The object was retrieved successfully.
 	if (object) {
-		name = object.get("name");
+		var name1 = object.get("name");
 		var email = object.get("email");
 		var contact = object.get("contact");
 		var technical = object.get("technical");
-		
+		var edu=new Object();
 		var extra=new Object();
 		var intern=new Object();
 		var project=new Object();
-		edu=object.get("education");
-		extra=object.get("extra");
-		intern=object.get("internships");
-		project=object.get("projects");
+		var edu=object.get("education");
+		var extra=object.get("extra");
+		var intern=object.get("internships");
+		var project=object.get("projects");
 		console.log(email);
 		console.log(contact);
 		console.log(technical);
@@ -49,7 +35,7 @@ query.first({
 		console.log(extra);
 		console.log(intern);
 		console.log(project);
-		document.myform.name.value=name;
+		document.myform.name1.value=name1;
 		document.myform.email.value=email;
 		document.myform.contact.value=contact;
 		document.myform.course0.value=edu[0].course;
@@ -67,6 +53,13 @@ query.first({
 		document.myform.board2.value=edu[2].board;
 		document.myform.percent2.value=edu[2].percent;
 		document.myform.pyear2.value=edu[2].pyear;
+		document.myform.event0.value=extra[0].event;
+		document.myform.place0.value=extra[0].place;
+		document.myform.extrarole0.value=extra[0].exrarole;
+		
+	    document.myform.company0.value=intern[0].company;
+		document.myform.duration0.value=intern[0].duration;
+		document.myform.role0.value=intern[0].role;
         document.myform.technical.value=technical;
 		document.myform.title0.value=project[0].title;
 		document.myform.technology0.value=project[0].technology;
@@ -77,19 +70,14 @@ query.first({
 		document.myform.title2.value=project[2].title;
 		document.myform.technology2.value=project[2].technology;
 		document.myform.description2.value=project[2].description;
-		document.myform.company0.value=intern[0].company;
-		document.myform.duration0.value=intern[0].duration;
-		document.myform.role0.value=intern[0].role;
-		document.myform.event0.value=extra[0].event;
-		document.myform.place0.value=extra[0].place;
-		document.myform.extrarole0.value=extra[0].exrarole;
+		 
 		document.myform.event1.value=extra[1].event;
 		document.myform.place1.value=extra[1].place;
 		document.myform.extrarole1.value=extra[1].exrarole;
 		document.myform.event2.value=extra[2].event;
 		document.myform.place2.value=extra[2].place;
 		document.myform.extrarole2.value=extra[2].exrarole;
-	
+		console.log(name);
 	}
   },
   error: function(object, error) {
@@ -97,7 +85,17 @@ query.first({
     // error is a Parse.Error with an error code and message.
   }
 });	
-}			
+}
+ else {
+    // show the signup or login page
+	console.log("fail");
+	$( "html" ).removeClass( "loading" );
+	alert("please login to continue");
+	window.location.href="index.html";
+	
+ }	
+	
+}		
 function logo()
 {  
 var currentUser = Parse.User.current();
@@ -105,9 +103,10 @@ console.log(currentUser);
 	Parse.User.logOut();
 	
 	currentUser = Parse.User.current();
-	console.log(currentUser);
 	
+	console.log(currentUser);
 	window.location.reload(true);
+
  
 }
 
