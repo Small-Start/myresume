@@ -18,8 +18,6 @@ Parse.initialize("1lRkVkAfr6Daum7wITXFrFyk8GlCbBwx8soPwnAR", "PzbJSDOdw0ZlMHWj5x
 
         jsonEd.push(item);
 		
-		if(!$("#course1").val()=="")
-		{
 			course = $("#course1").val();
 			college = $("#college1").val();
 			board = $("#board1").val();
@@ -34,9 +32,7 @@ Parse.initialize("1lRkVkAfr6Daum7wITXFrFyk8GlCbBwx8soPwnAR", "PzbJSDOdw0ZlMHWj5x
 		item["pyear"]=pyear;
         jsonEd.push(item);
 		
-		}
-if(!$("#course2").val()=="")
-		{
+		
 			course = $("#course2").val();
 			college = $("#college2").val();
 			board = $("#board2").val();
@@ -51,10 +47,8 @@ if(!$("#course2").val()=="")
 		item["pyear"]=pyear;
         jsonEd.push(item);
 		
-		}
 		
-
-   // console.log(jsonEd);
+   console.log(jsonEd);
 }
 function jsonpro()
  {
@@ -70,8 +64,6 @@ function jsonpro()
 		
         jsonPr.push(item);
 		
-		if(!$("#title1").val()=="")
-		{
 			title = $("#title1").val();
 			technology = $("#technology1").val();
 			description = $("#description1").val();
@@ -83,9 +75,7 @@ function jsonpro()
 		
         jsonPr.push(item);
 		
-		}
-if(!$("#title2").val()=="")
-		{
+
 			title = $("#title2").val();
 			technology = $("#technology2").val();
 			description = $("#description2").val();
@@ -97,8 +87,8 @@ if(!$("#title2").val()=="")
 		
         jsonPr.push(item);
 		
-		}
-    //console.log(jsonEd);
+		
+    console.log(jsonEd);
 }
 function jsonintern()
  {
@@ -158,8 +148,6 @@ function jsonextra()
 		
         jsonEx.push(item);
 		
-		if(!$("#event1").val()=="")
-		{
 			event = $("#event1").val();
 			place = $("#place1").val();
 			extrarole = $("#extrarole1").val();
@@ -171,9 +159,6 @@ function jsonextra()
 		
         jsonEx.push(item);
 		
-		}
-if(!$("#event2").val()=="")
-		{
 			event = $("#event2").val();
 			place = $("#place2").val();
 			extrarole = $("#extrarole2").val();
@@ -185,7 +170,7 @@ if(!$("#event2").val()=="")
 		
         jsonEx.push(item);
 		
-		}		}
+				}
 
 
   function createJSON() {
