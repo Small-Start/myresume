@@ -2,7 +2,7 @@
 <html class="loading">
 <head>
 	<!-- Latest compiled and minified CSS -->
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="materialize.css">
 	<script src="jquery.min.js"></script>
@@ -22,21 +22,22 @@ html {
     -webkit-transition: background-color 1s;
     transition: background-color 1s;
 }
-.h6, h6{
-	font-size:16px !important;
-}
+
+
 html, body {
     /* For the loading indicator to be vertically centered ensure */
     /* the html and body elements take up the full viewport */
 
     font-family: 'Roboto', sans-serif;
+
     
 }   
 html.loading {
     /* Replace #333 with the background-color of your choice */
     /* Replace loading.gif with the loading image of your choice */
     background:  url('loader.gif') no-repeat 50% 50%;
-
+  
+   margin-top:-55%;
     /* Ensures that the transition only runs in one direction */
     -webkit-transition: background-color 0;
     transition: background-color 0;
@@ -53,26 +54,33 @@ html.loading body {
     -webkit-transition: opacity 0;
     transition: opacity 0;
 }
+.table-responsive{
+	padding:4%;
+}
 
 </style>
 <body ng-cloak ng-app="myApp" ng-init="status=true" ng-controller="myCtrl" onload="value()">
 	<nav class="navbar navbar-default ">
-  		<div class="container-fluid">
-    		<div class="navbar-header">
-    		</div>
-    		<div>
-      			<ul class="nav navbar-nav">
-      				<div class="row">
-      				<div class="col-md-4 col-xs-4 col-sm-4"><button type="button" class="head btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Open Modal</button></div>
+		<div class="row">
+      				<div class="col-md-1 col-sm-3 col-xs-3 col-md-offset-1"><button type="button" class="head btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Edit</button></div>
         					<!-- Deepti....removed home button, page 1-3 button-->
         					<!--<li class="active">-->
         					<!-- <a href="#">Home</a></li>
         					<li><a href="#">Page 1</a></li>
         					<li><a href="#">Page 2</a></li> 
         					<li><a href="#">Page 3</a></li> -->
- 		 					<!-- Deepti....removed home button, page 1-3 button-->
-						<div class="pull-right col-md-4 col-xs-8 col-sm-4"><button type="button" onclick="logo()" class="head btn btn-info btn-sm">Log Out</button></div>
-						</div>	
+ 		 					
+					 <div class="col-md-10 col-sm-6 col-xs-6"><button type="button" onclick="logo()" class=" head btn btn-info btn-sm">Log Out</button></div>
+						</div>
+						
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+    		</div>
+    		<div>
+      			<ul class="nav navbar-nav">
+      		
+						
+						  
         		</ul>
         	</div>
     		</div>
@@ -92,7 +100,7 @@ html.loading body {
 							</div>
 
 							<div class="col-xs-12 col-md-10 col-sm-12">
-								<div class="text-center "><h1>{{input.name1}}</h1></div>
+								<div class="text-center "><h1>{{input.name1}}</h1></div><br><br>
                              </div>
 						
 								<div class="row clearfix personaldetails ">
@@ -108,14 +116,14 @@ html.loading body {
               <div class="background">
 				 <div class="education">
 				 	  <div class="row clearfix">
-				 	  	<div class="col-xs-12 col-md-3 col-sm-12">
+				 	  	<div class="education1 col-xs-12 col-md-2 col-sm-12">
 				 	  		<div class="row 1 clearfix">
 				 	  			<div class="col-xs-2 col-md-2 col-sm-2"><img src=""></div>
 				 	  			<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Education</div>
 				 	  		</div>
 				 	  		
 				 	  	</div>
-				 	  	<div class="col-xs-12 col-md-9 col-sm-12 details">
+				 	  	<div class="col-xs-12 col-md-10 col-sm-12 details">
 				 	  		<div  class=" maindetails text-center row clearfix 4 ">
 				 	  			<div  class="col-md-3 col-xs-12 col-sm-12"><h6>COURSE:</h6><br><span >{{input.course[0]}}</span></div>
 				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>SCHOOL:</h6><br><span >{{input.school[0]}}</span></div>
@@ -154,14 +162,14 @@ html.loading body {
 
 					<div class="education">
 						<div class="row clearfix">
-							<div class="maindetails col-md-3 col-sm-12 col-xs-12">
-								<div class="row 1 clearfix">
-									<div class="col-xs-2"><img src=""></div>
-									<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Extra Activties</div>
-								</div>
-
-							</div>
-							<div class="maindetails text-center  col-md-9 details ">
+							<div class="education1 col-xs-12 col-md-2 col-sm-12">
+				 	  		<div class="row 1 clearfix">
+				 	  			<div class="col-xs-2 col-md-2 col-sm-2"><img src=""></div>
+				 	  			<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Extra Activities</div>
+				 	  		</div>
+				 	  		
+				 	  	</div>
+							<div class="maindetails text-center col-sm-12 col-xs-12 col-md-10 details ">
 								<div  class="row clearfix 4 ">
 									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>EVENT:</h6><br><span class="text-center">{{input.event[0]}}</span></div>
 									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>PLACE:</h6><br><span class="text-center">{{input.place[0]}}</span></div>
@@ -191,30 +199,28 @@ html.loading body {
 	                 <br>
 					<div class="education">
 						<div class="row clearfix">
-							<div class="maindetails col-md-3 col-sm-12 col-xs-12  ">
-								<div class="row 1 clearfix">
-									<div class="col-xs-2"><img src=""></div>
-									<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Work Experience</div>
-								</div>
-
-							</div>
-							<div class="maindetails text-center col-md-9 col-sm-12 col-xs-12 details">
+							<div class="education1 col-xs-12 col-md-2 col-sm-12">
+				 	  		<div class="row 1 clearfix">
+				 	  			<div class="col-xs-2 col-md-2 col-sm-2"><img src=""></div>
+				 	  			<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Work Experience</div>
+				 	  		</div>
+				 	  		
+				 	  	</div>
+							<div class="maindetails text-center col-md-10 col-sm-12 col-xs-12 details">
 								<div ng-show="internship" class="row clearfix 4">
-									<div class="row"><h4>Internship</h4></div>
+									<div class="row"><h3>Internship</h3></div>
 									<div class="col-xs-12 col-md-4 col-sm-12"><h6>COMPANY NAME :</h6><br><span class="text-center">{{input.company[0]}}</span></div>
 								
 									<div class="col-xs-12 col-md-4 col-sm-12 "> <h6>DURATION:</h6><br><span class="text-center">{{input.duration[0]}}</span></div>
 									<div class="col-xs-12 col-md-4 col-sm-12"> <h6>ROLE :</h6><br><span class="text-center">{{input.role1[0]}}</span></div>
 								</div>
 								<div ng-show="internship"><hr class="black"></div>
-							</div>
-
-							</div>
+							
 
 							     <div  ng-show="project" class="row clearfix">
-								<div class="maindetails col-xs-12 col-md-3 col-sm-12 "></div>
-								<div class="maindetails text-center col-md-9 col-sm-12 col-xs-12 details  details">
-								<div class="row clearfix 4"><h4>Projects</h4></div>
+								
+								<div class="maindetails text-center col-md-12 col-sm-12 col-xs-12">
+								<div class="row clearfix 4"><h3>Projects</h3></div>
                                 <div class="row">
 								<div class="col-xs-12 col-md-4 col-sm-12"><h6>TITLE :</h6><br><span class="text-center">{{input.title[0]}}</span></div>
 								
@@ -225,41 +231,45 @@ html.loading body {
 								</div>
 
 								</div>
+                                  </div>
 
+							</div>
 	                            </div>
 	                        
-                              
-	                            <div class="row clearfix">
-							<div class="maindetails col-xs-12 col-md-3 col-sm-12 ">
-								<div class="row 1 clearfix">
-									<div class="maindetails col-xs-12 col-md-2 col-sm-12 "><img src=""></div>
-									<div class="text-center col-xs-12 col-sm-12 col-md-10 edu r2 r5">Technical Skills</div>
-								</div>
-							</div>
-								<div class="col-md-9 maindetails col-xs-12 col-sm-12 details">
+                              <div class="education">
+	                            <div class=" row clearfix">
+							<div class=" col-xs-12 col-md-2 col-sm-12">
+				 	  		<div class="row  clearfix">
+				 	  			<div class="col-xs-12 col-md-2 col-sm-12"><img src=""></div>
+				 	  			<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Technical Skills</div>
+				 	  		</div>
+				 	  		
+				 	  	</div>
+								<div class="col-md-9 maindetails col-xs-10 col-sm-12 details">
 								<span class="text-center">{{input.technicalskills}}</span>
 										
 								</div>
 							</div>
-								
+								</div>
 							
 						</div>
 
 
 							</div>
 						</div>
+                      </div>
+                  </div>
+	                  <div class="row ">
+						<div class="col-md-6 col-sm-6 col-xs-6">
+	                     <button id="bt1" type="button" class=" pull-right btn btn-primary btn-sm"  onclick="createJSON()"><span class="glyphicon glyphicon-upload"></span> UPLOAD</button></div>
+	                   
+		                <div class="col-md-6 col-sm-6 col-xs-6"> <button id="bt2" type="button" class="pull-left  btn btn-primary btn-sm" onclick="winprint()"><span class="glyphicon glyphicon-print "></span>  PRINT</button></div>
 
-	                           
+		                </div>         
 
 				
 					<br>
-					<div class="row remove">
-						<div class="col-md-6 center-block col-xs-6 col-sm-6">
-	                     <button id="bt1" type="button" class="pull-right btn btn-primary btn-sm" onclick="createJSON()"><span class="glyphicon glyphicon-upload"></span> UPLOAD</button></div>
-	                     <div class="col-md-6  col-xs-6 col-sm-6">
-		                 <button id="bt2" type="button" class=" pull-left btn btn-primary btn-sm" onclick="winprint()"><span class="glyphicon glyphicon-print "></span>  PRINT</button></div>
-
-		                </div>
+					
 		            </div>
 						</div>
 					
@@ -289,10 +299,10 @@ html.loading body {
     <div class="modal-content orange.lighten-5 ">
       <div class="modal-header orange.lighten-5 ">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Resume Details</h4>
       </div>
       <div class="modal-body">
-      	<form class="form #ffa726 orange.lighten-5 " name="myform" ng-show="status" novalidate >
+      	<form  name="myform" ng-show="status" novalidate >
 	        <div class="main1"ng-show="status">
 	        	<div class="row">
         		<div class="col-md-12">
@@ -302,10 +312,10 @@ html.loading body {
         	</div>
         	</div>
         		</div>
-	           <div id="personal" class="describe">
+	           <div id="personal" class="text-center text-details card describe">
 
 	           		<!-- Deepti.... made changes in classes...-->
-	              <a class="waves-effect waves-light #ffcc80 orange lighten-3 color1 btn">Personal Details</a>
+	                <div class="waves-effect waves-light"><h4>Personal details</h4></div>
 	                  <div class="table-responsive">
 	                <table class="table">
 
@@ -336,8 +346,8 @@ html.loading body {
 	                <input type="file" name="pic" accept="image/*">
 	            </div> <div ng-controller="myCtrl">
 	          <a class="waves-effect waves-light btn" ng-click="description()">Education Details</a>-->
-	            <div id="education" class="describe" >
-	            	 <a class="center waves-effect waves-light #ffcc80 orange lighten-3 color1 btn" ng-click="description()">Education Details</a><br><br>
+	            <div id="education" class="text-details card describe" >
+	            	<div class="waves-effect waves-light"><h4>Education Details</h4></div>
 	                <div class="table-responsive">
 	              <table class="table edutable" id="edtable">
 	                    <tr>
@@ -374,13 +384,13 @@ html.loading body {
 	            </div>
 
 	             
-	            <div id="addskills"  class="describe" >
-	               <a class="waves-effect waves-light #ffcc80 orange lighten-3 color1 btn" ng-click="description()" >TECHNICAL SKILLS</a><br><br>
+	            <div id="addskills"  class="text-center card describe" >
+	               <div class="waves-effect waves-light"><h4>Technical skills</h4></div>
 	                <input  class="r6 bg" id="technical" ng-model="input.technicalskills"type="text" placeholder="example -: c,java,Android,database" class="text">
 	            </div>
 	            
-	            <div id="project" class="describe" >
-	            	 <a class="waves-effect waves-light #ffcc80 orange lighten-3 color1 btn" ng-click="description()">Projects</a><br><br>
+	            <div id="project" class="text-center card describe" >
+	            	 <div class="waves-effect waves-light"><h4>Projects</h4></div>
 	            	  <div class="table-responsive">
 	                <table  class="table edutable" id="projecttable">
 	                    <tr>
@@ -397,18 +407,18 @@ html.loading body {
 	                    <tr>
 	                        <td class="r6"><input id="title1" type="text"ng-model="input.title[1]"></td>
 	                        <td class="r6"><input id="technology1"type="text"ng-model="input.technology[1]"></td>
-	                        <td class="r6" colspan="2"><textarea id="description1"ng-model="input.description[1]"></textarea></td>
+	                        <td class="r6"><textarea id="description1"ng-model="input.description[1]"></textarea></td>
 	                    </tr>
 	                    <tr>
 	                        <td class="r6"><input id="title2" type="text"ng-model="input.title[2]"></td>
 	                        <td class="r6"><input id="technology2"type="text" ng-model="input.technology[2]"></td>
-	                        <td class="r6" colspan="2"><textarea id="description2"ng-model="input.description[2]"></textarea></td>
+	                        <td class="r6" ><textarea id="description2"ng-model="input.description[2]"></textarea></td>
 	                    </tr>
 	                </table>
 	                 </div>
 	            </div>
-	            <div id="intern" class="describe">
-	                 <a class="waves-effect waves-light #ffcc80 orange lighten-3 color1 btn">Internship</a><br><br>
+	            <div id="intern" class="text-center card describe">
+	                 <div class="waves-effect waves-light"><h4>Internship</h4></div>
 	                  <div class="table-responsive">
 	              <table class="table edutable" id="interntable">
 	                    <tr>
@@ -419,7 +429,7 @@ html.loading body {
 	                    <tr>
 	                        <td class="r6"><input id="company0"   type="text" required ng-model="input.company[0]"></td>
 	                        <td class="r6"><input id="duration0"  type="text" required ng-model="input.duration[0]"></td>
-	                        <td class="r6" colspan="2"><textarea id="role0"  required ng-model="input.role1[0]"></textarea></td>
+	                        <td class="r6" ><textarea id="role0"  required ng-model="input.role1[0]"></textarea></td>
 	                    </tr>
 	                    
 	                </table>
@@ -427,8 +437,8 @@ html.loading body {
 	            </div>
                   </div>
 
-	            <div id="activity">
-	                 <a class="waves-effect waves-light #ffcc80 orange lighten-3 color1 btn" ng-click="description()">Extra Activities</a><br><br>
+	            <div id="activity" class="text-center card activity">
+	                 <div class="waves-effect waves-light"><h4>Extra Activities</h4></div>
 	                 <div class="table-responsive">
 	                <table class="table edutable" id="activitytable">
 	                    <tr>
@@ -555,24 +565,10 @@ $("#btn3").hide();
 
 			function formhide(){
 				
-				console.log('sucess')
-				$( ".form" ).animate({
+				console.log('sucess');
+				
 
-   
-    top: "-3174px",
-    
-  }, 500
-    // Animation complete.
-  );
-
- $( ".visible" ).animate({
-
-   
-    left: "0px",
-    
-  }, 500
-    // Animation complete.
-  );
+ 
  $("#btn3").show();
 $("#btn4").hide();
 
@@ -688,13 +684,13 @@ if(event1.value==""||place1.value==""||extrarole1.value==""){
 else{
 		$scope.emptyevent1=true;
 }
-if(company0.value==""||duration0.value==""||role0.value==""){
+/*if(company0.value==""||duration0.value==""||role0.value==""){
 	$scope.internship=false;
   
 }
 else{
 		$scope.internship=true;
-}
+}*/
 if(title0.value==""||technology0.value==""||description0.value==""){
 	$scope.project=false;
   
