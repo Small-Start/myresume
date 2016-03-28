@@ -1,0 +1,239 @@
+img.img-responsive {
+	
+border-radius: 50%;
+width:140px!important;
+height:140px!important;
+display:block;
+margin:0 auto;
+margin-top:11%;
+
+
+}
+.h6, h6{
+	font-size: 12px;
+    font-weight: 600;
+}
+.container-fluid{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.navbar{
+	min-height: 80px !important;
+}
+.navbar-default{
+	background-color: #3b3a36;
+}
+.btn-info{
+	background-color:#b3c2bf;
+	border:#e9ece5;
+}
+.body{
+	word-wrap:break-word;
+}
+.main{
+margin-top:4%;
+margin-left:auto;
+margin-right:auto;
+background-color:#e9ece5;
+z-index:95;
+
+position: relative;
+padding:1%;
+
+}
+.text-center{
+	word-wrap:break-word;
+}
+/*Deepti.....added a class bg*/
+.bg
+{
+	background-color: white;
+	color: black;
+}
+.color1{
+	color: black;
+	font-weight: bold;
+	font-style: italic;
+	margin-left: 8px;
+	font-size:20px;
+	box-shadow: 2px;
+	margin-bottom: 5px;
+}
+/*Deepti*/
+.name h1{
+	color:black;
+	margin-left:25%;
+	font-size: 50px;
+  }
+.r1{
+background-color:#b3c2bf;
+font-weight:600;
+box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgb(59, 59, 54);;
+}
+.r2{
+	color:#3b3a36;
+}
+.r3{
+	color:#3b3a36;
+	margin-top:4%;
+	margin-left: 25px;
+    margin-right: 25px;
+font-weight:600;
+}
+.r5{
+	
+}
+
+#edu{
+	font-weight: bold;
+	
+    font-size:20px;
+
+}
+.education1{
+	padding:8%;
+}
+ul li{
+	display:inline;
+}
+li{
+	margin :0 0 100px 0;
+}
+.details{
+	border-left:2px solid #c0dfd9;
+}
+.education{
+	margin-top: 0%;
+	margin-left: 0%;
+word-wrap:break-word;
+box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgb(59, 59, 54);
+padding: 2%;
+margin:2%;
+}
+.r6{
+	color:black;
+	font-weight: bold;
+	background-color: white;
+	word-wrap:break-word;
+}
+.degree{
+font-weight:bold;
+padding-left:2%;
+padding-top:2%; 
+padding-bottom: 2%;
+padding-right: 2%;
+color:black;
+font-style: italic;
+font-family: Courier New;
+word-wrap:break-word;
+}
+.university,.board,.percentage,.passingyear{
+padding-left:1%;
+padding-top:1%; 
+padding-bottom: 1%;
+padding-right: 1%;
+font-weight: bold;
+color:black;
+font-style:italic;
+font-family: Courier New;
+word-wrap:break-word;
+}
+.maindetails{
+	color:#3b3a36;
+	font-size:15px;
+}
+hr.black{
+border:1px solid #c0dfd9;
+
+}
+
+.edu,.technicalskills{
+	font-weight: bolder;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	font-size: 20px;
+}
+.work-experience,.technicalskills{
+	margin-left: 3%;
+	word-wrap:break-word;
+}
+.parameters{
+	margin-left: 25%;
+}
+.technicalskills{
+	font-weight: bolder;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	margin-top: 15%;
+	margin-bottom:15%;
+	font-size: 35px;
+	word-wrap:break-word;
+
+}
+.background{
+	background-color:#e9ece5;
+}
+.r4{
+	color:#757575;
+	font-family:Minion;	
+	display:inline-block;
+	word-wrap:break-word;
+}
+
+.remove{
+	margin-left:40%;
+	margin-right: 40%;
+}
+form{
+	position:relative;
+	z-index:99;
+	word-wrap:break-word;
+
+}
+table#edtable{
+position: relative;
+z-index:99;
+}
+.show{
+	position: relative;
+	top:20px;
+}
+.visible{
+	position: relative;
+
+}
+#btn3{
+	font-size:30px;
+	padding:2px;
+	z-index:100;
+	color:rgb(130, 177, 255);
+	margin:6px;
+}
+#btn4{
+	font-size:30px;
+	color:rgb(130, 177, 255) !important;
+	padding:2px;
+	z-index:100;
+	margin:6px;
+}
+#btn3:hover{
+color: green ;
+cursor:pointer;
+}
+#btn4:hover{
+	color: green !important ;
+cursor:pointer;
+
+}
+.navbar-default{
+	position:fixed !important;
+	z-index:100 !important;
+}
+/* Deepti*/
+.r7{
+
+	background-color: black;
+}
+/* Deepti */
