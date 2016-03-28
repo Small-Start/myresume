@@ -2,15 +2,15 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/materialize.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
 <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-messages.min.js"></script>
 <script src="js/signup.js" type="text/javascript"></script>
 <script src="js/login.js" type="text/javascript"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 <style>
 .r1{
 	width:30%;
@@ -30,7 +30,7 @@
 .panel {
     margin-bottom: 20px;
     background-color: #fff;
-    border: 1px solid transparent;
+    border: 1px solid #bce8f1;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -59,18 +59,41 @@
     <div style="margin-top:50px"class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
       <div class="panel panel-info">
           <div class="panel-heading">
-           <div class="panel-title">Sign In</div>
+           <div class="panel-title">Log In</div>
            <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
           </div>
-          
+          <div class="panel-body">
+          <form>
+          <div style="margin-bottom: 25px" class="input-group">
+             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="username" type="text" class="form-control" name="username" value="" placeholder="username">
+          </div>
+          <div style="margin-bottom: 25px" class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input id="password" type="password" class="form-control" name="password" value="" placeholder="password">
+          </div>
+
+          <button type="button" onclick="start()" class="btn btn-success">LOGIN &nbsp;</button>
+          </form>
+          <div class="col-md-12 control">
+            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+            Don't have an account! 
+            <a href="#" onclick="$('#loginbox').hide(); $('#signupbox').show()">
+            Sign Up Here
+            </a>
+            </div>
+          </div>
+          </div>
       </div>
     </div>
   </div>
+  <!--
 <div class="card row col-md-4 col-xs-12 col-sm-12 ">
     <form>
       <h4>LOG IN</h3>
       <div class="row">
         <div class="input-field">
+          <span class="glyphicon glyphicon-user">
           <input id="username" type="text" class="validate">
           <label for="username">User Name</label>
         </div>
@@ -88,13 +111,13 @@
   </div>
 
   
-
-<!-- Modal -->
+-->
+<!-- Modal --><!--
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="signu" >
+  <div class="signu" >-->
 
     <!-- Modal content-->
-    <div >
+   <!-- <div >
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title" style="text-align:center";>SIGN UP</h4>
@@ -140,7 +163,7 @@
 
   </div>
 
-        
+   -->     
 </body>
 <script >
 var app = angular.module('app', ['ngMessages']);
