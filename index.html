@@ -54,15 +54,15 @@
 }
 </style>
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-controller='mycontroller'>
   <div class="container">
     <div style="margin-top:50px"class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-      <div class="panel panel-info">
+      <div ng-show="showing" class="panel panel-info">
           <div class="panel-heading">
            <div class="panel-title">Log In</div>
            <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
           </div>
-          <div class="panel-body">
+          <div  class="panel-body">
           <form>
           <div style="margin-bottom: 25px" class="input-group">
              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -78,95 +78,55 @@
           <div class="col-md-12 control">
             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
             Don't have an account! 
-            <a href="#" onclick="$('#loginbox').hide(); $('#signupbox').show()">
+            <a style="cursor:pointer;text-decoration:none;" ng-click="show()">
             Sign Up Here
             </a>
             </div>
           </div>
           </div>
+        </div>
+           <div ng-hide="showing" class="panel panel-info">
+          <div class="panel-heading">
+           <div class="panel-title">Sign up</div>
+          </div>
+          <div  class="panel-body">
+          <form>
+          <div style="margin-bottom: 25px" class="input-group">
+             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="uname" type="text" class="form-control" name="userFirstName" value="" placeholder="username">
+          </div>
+          <div style="margin-bottom: 25px" class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input id="password1" type="password" class="form-control" name="password" value="" placeholder="password">
+          </div>
+          <div style="margin-bottom: 25px" class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+           <input id="email1" type="email" class="form-control" name="userEmail" placeholder="email"/>
+            </div>
+          <button type="button" onclick="signu()" class="btn btn-primary">Signup&nbsp;</button>
+          </form>
+          <div class="col-md-12 control">
+            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+            Already Signup! 
+             <a style="cursor:pointer;text-decoration:none;" ng-click="show()">
+            Login Here
+            </a>
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
       </div>
     </div>
   </div>
-  <!--
-<div class="card row col-md-4 col-xs-12 col-sm-12 ">
-    <form>
-      <h4>LOG IN</h3>
-      <div class="row">
-        <div class="input-field">
-          <span class="glyphicon glyphicon-user">
-          <input id="username" type="text" class="validate">
-          <label for="username">User Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-    </form>
-
-    <button type="button" onclick="start()" class="btn btn-info btn-lg">LOGIN &nbsp;</button>
-	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">SIGNUP</button>
-  </div>
-
-  
--->
-<!-- Modal --><!--
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="signu" >-->
-
-    <!-- Modal content-->
-   <!-- <div >
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" style="text-align:center";>SIGN UP</h4>
-      </div>
-      <div class="modal-body">
-        <form name="exampleForm" class="myForm" required >
-        <div  class="input-field col s12">
-          <input id="uname" type="text" class="validate" name="userFirstName" ng-model="firstName" required />
-          <label for="uname">Username</label>
-          <div ng-messages="exampleForm.userFirstName.$error">
-  <div ng-message="required">This field is required</div>
-</div>
-        </div>
-   
-        <div class="input-field col s12">
-          <input id="password1" type="password" class="validate" name="password" ng-model="password" ng-minlength="6" required />
-          <label for="password1">Password</label>
-           <div ng-messages="exampleForm.password.$error">
-  <div ng-message="required">This field is required</div>
-  <div ng-message="minlength">Password must be over 6 characters</div>
-</div>
-        </div>
-   
-      
-        <div class="input-field col s12">
-          <input id="email1" type="email" class="validate" name="userEmail" ng-model="email" required />
-          <label for="email1">Email</label>
-         <div ng-messages="exampleForm.userEmail.$error">
-  <div ng-message="required">This field is required</div>
-  <div ng-message="email">Your email address is invalid</div>
-</div>
-      
-      </div>
-    </form>
-      </div>
-         </div>
-      <div class="modal-footer">
-        <button type="submit" onclick="signu()" class="btn btn-default" style="text-align:center">Submit</button>
-      </div>
-    </div>
-	
-
-
-  </div>
-
-   -->     
-</body>
+    </body>
 <script >
-var app = angular.module('app', ['ngMessages']);
-
+var app = angular.module('app',[]);
+app.controller('mycontroller',['$scope',function($scope){
+$scope.showing=true;
+$scope.show=function(){
+$scope.showing=!$scope.showing; 
+}
+}])
 </script>
 </html>
