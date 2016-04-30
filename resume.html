@@ -1,759 +1,803 @@
 <!DOCTYPE html>
 <html class="loading">
+
 <head>
-	<!-- Latest compiled and minified CSS -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/materialize.css">
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/angular.min.js"></script>
-	<script type="text/javascript" src="js/funcs.js"></script>
-	
-<script src="js/login.js" type="text/javascript"></script>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style4.css">
-	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <!-- Latest compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/materialize.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/funcs.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="css/print.css">
-	</head>
+    <script src="js/login.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style4.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="css/print.css">
+</head>
 <style>
-html {
-    -webkit-transition: background-color 1s;
-    transition: background-color 1s;
-}
-
-
-html, body {
-    /* For the loading indicator to be vertically centered ensure */
-    /* the html and body elements take up the full viewport */
-
-    font-family: 'Roboto', sans-serif;
-
+    html {
+        -webkit-transition: background-color 1s;
+        transition: background-color 1s;
+    }
     
-}   
-html.loading {
-    /* Replace #333 with the background-color of your choice */
-    /* Replace loading.gif with the loading image of your choice */
-    background:  url('loader.gif') no-repeat 50% 50%;
-  
-   margin-top:-55%;
-    /* Ensures that the transition only runs in one direction */
-    -webkit-transition: background-color 0;
-    transition: background-color 0;
-}
-body {
-    -webkit-transition: opacity 1s ease-in;
-    transition: opacity 1s ease-in;
-}
-html.loading body {
-    /* Make the contents of the body opaque during loading */
-    opacity: 0;
-
-    /* Ensures that the transition only runs in one direction */
-    -webkit-transition: opacity 0;
-    transition: opacity 0;
-}
-.table-responsive{
-	padding:4%;
-}
-
+    html,
+    body {
+        /* For the loading indicator to be vertically centered ensure */
+        /* the html and body elements take up the full viewport */
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    html.loading {
+        /* Replace #333 with the background-color of your choice */
+        /* Replace loading.gif with the loading image of your choice */
+        background: url('loader.gif') no-repeat 50% 50%;
+        margin-top: -55%;
+        /* Ensures that the transition only runs in one direction */
+        -webkit-transition: background-color 0;
+        transition: background-color 0;
+    }
+    
+    body {
+        -webkit-transition: opacity 1s ease-in;
+        transition: opacity 1s ease-in;
+    }
+    
+    html.loading body {
+        /* Make the contents of the body opaque during loading */
+        opacity: 0;
+        /* Ensures that the transition only runs in one direction */
+        -webkit-transition: opacity 0;
+        transition: opacity 0;
+    }
+    
+    .table-responsive {
+        padding: 4%;
+    }
 </style>
+
 <body ng-cloak ng-app="myApp" ng-init="status=true" ng-controller="myCtrl" onload="value()">
-	<nav class="navbar navbar-default ">
-		<div class="row">
-      				<div class="col-md-1 col-sm-3 col-xs-3 col-md-offset-1"><button type="button" class="head btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Edit</button></div>
-        					<!-- Deepti....removed home button, page 1-3 button-->
-        					<!--<li class="active">-->
-        					<!-- <a href="#">Home</a></li>
+    <nav class="navbar navbar-default ">
+        <div class="row">
+            <div class="col-md-1 col-sm-3 col-xs-3 col-md-offset-1"><button type="button" class="head btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Edit</button></div>
+            <!-- Deepti....removed home button, page 1-3 button-->
+            <!--<li class="active">-->
+            <!-- <a href="#">Home</a></li>
         					<li><a href="#">Page 1</a></li>
         					<li><a href="#">Page 2</a></li> 
         					<li><a href="#">Page 3</a></li> -->
- 		 					
-					 <div class="col-md-10 col-sm-6 col-xs-6"><button type="button" onclick="logo()" class=" head btn btn-info btn-sm">Log Out</button></div>
-						</div>
-						
-  		<div class="container-fluid">
-    		<div class="navbar-header">
-    		</div>
-    		<div>
-      			<ul class="nav navbar-nav">
-      		
-						
-						  
-        		</ul>
-        	</div>
-    		</div>
-  		</div>
-	</nav>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="container-fluid">
-				
-				
-				
-	           		<div class="main" >
-						<div class ="row clearfix r1 r3">						
-						<div class="col-md-2 col-sm-12 col-xs-12">
-								
-<canvas id="imageCanvas" class='img-responsive' style="padding:5% ;margin:2%;border-top:10%;border-top:10%"></canvas>
-							</div>
 
-							<div class="col-xs-12 col-md-10 col-sm-12">
-								<div class="text-center "><h1>{{input.name1}}</h1></div><br><br>
-                             </div>
-						
-								<div class="row clearfix personaldetails ">
-									<div class="col-xs-12 col-sm-12 col-md-12">
-										<div class="text-center col-xs-12  col-sm-12 col-md-4"></div>
-										<div class="text-center col-xs-12  col-sm-12 col-md-4">EMAIL: {{input.email}}</div>
-										<div class="text-center col-xs-12  col-sm-12 col-md-4">CONTACT NUMBER: {{input.contact}}</div>
-									</div>
-								</div>
-		             		</div>
+            <div class="col-md-10 col-sm-6 col-xs-6"><button type="button" onclick="logo()" class=" head btn btn-info btn-sm">Log Out</button></div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="navbar-header">
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
 
 
-              <div class="background">
-				 <div class="education">
-				 	  <div class="row clearfix">
-				 	  	<div class="education1 col-xs-12 col-md-2 col-sm-12">
-				 	  		<div class="row 1 clearfix">
-				 	  			<div class="col-xs-2 col-md-2 col-sm-2"><img src=""></div>
-				 	  			<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Education</div>
-				 	  		</div>
-				 	  		
-				 	  	</div>
-				 	  	<div class="col-xs-12 col-md-10 col-sm-12 details">
-				 	  		<div  class=" maindetails text-center row clearfix 4 ">
-				 	  			<div  class="col-md-3 col-xs-12 col-sm-12"><h6>COURSE:</h6><br><span >{{input.course[0]}}</span></div>
-				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>SCHOOL:</h6><br><span >{{input.school[0]}}</span></div>
-				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>BOARD:</h6><br><span >{{input.board[0]}}</span></div>
-				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PERCENTAGE:</h6><br><span>{{input.percentage[0]}}</span></div>
-				 	  			<div class="col-md-2 col-xs-12 col-sm-12"><h6>PASSING YEAR:</h6><br><span >{{input.passingyear[0]}}</span></div>
-				 	  			
-				 	  		</div>
-				 	  		<hr class="black">
-				 	  		<div class="maindetails text-center row clearfix 4">
-				 	  			<div  class="col-md-3 col-xs-12 col-sm-12 "><h6>COURSE:</h6><br><span >{{input.course[1]}}</span></div>
-				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>SCHOOL:</h6><br><span >{{input.school[1]}}</span></div>
-				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>BOARD:</h6><br><span >{{input.board[1]}}</span></div>
-				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PERCENTAGE:</h6><br><span >{{input.percentage[1]}}</span></div>
-				 	  				<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PASSING YEAR:</h6><br><span >{{input.passingyear[1]}}</span></div>
-				 	  		</div>
 
-				 	  		<hr class="black">
-				 	  		<div class="maindetails text-center row clearfix 4">
-				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>COURSE:</h6><br><span class="text-center">{{input.course[2]}}</span></div>
-				 	  			<div class="col-md-3 col-xs-12 col-sm-12 "><h6>SCHOOL:</h6><br><span class="text-center">{{input.school[2]}}</span></div>
-				 	  			<div class="col-md-2 col-xs-12 col-sm-12 "><h6>BOARD:</h6><br><span class="text-center">{{input.board[2]}}</span></div>
-				 	  				<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PERCENTAGE:</h6><br><span class="text-center">{{input.percentage[2]}}</span></div>
-				 	  				<div class="col-md-2 col-xs-12 col-sm-12 "><h6>PASSING YEAR:</h6><br><span class="text-center">{{input.passingyear[2]}}</span></div>
-
-				 	  		</div>
-				                
-
-				 	  	</div>
-				 	 </div>
-				 	</div>
-				 	<br>
-		 	  	
-                      
-		              
-
-					<div class="education">
-						<div class="row clearfix">
-							<div class="education1 col-xs-12 col-md-2 col-sm-12">
-				 	  		<div class="row 1 clearfix">
-				 	  			<div class="col-xs-2 col-md-2 col-sm-2"><img src=""></div>
-				 	  			<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Extra Activities</div>
-				 	  		</div>
-				 	  		
-				 	  	</div>
-							<div class="maindetails text-center col-sm-12 col-xs-12 col-md-10 details ">
-								<div  class="row clearfix 4 ">
-									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>EVENT:</h6><br><span class="text-center">{{input.event[0]}}</span></div>
-									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>PLACE:</h6><br><span class="text-center">{{input.place[0]}}</span></div>
-									<div class="col-xs-12 col-md-4 col-sm-12 "> <h6>ROLE:</h6><br><span class="text-center">{{input.role[0]}}</span></div>
-
-								</div>
-								<div><hr class="black"></div>
-								<div ng-show="emptyevent1" class="row clearfix 4">
-									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>EVENT:</h6><br><span class="text-center">{{input.event[1]}}</span></div>
-									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>PLACE:</h6><br><span class="text-center">{{input.place[1]}}</span></div>
-									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>ROLE:</h6><br><span class="text-center">{{input.role[1]}}</span></div>
-									
-								</div>
-								<div ng-show="emptyevent1"><hr class="black"></div>
-								<div ng-show="emptyevent2" class="row clearfix 4">
-									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>EVENT:</h6><span class="text-center">{{input.event[2]}}</span></div>
-									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>PLACE:</h6><span class="text-center">{{input.place[2]}}</span></div>
-									<div class="col-xs-12 col-md-4 col-sm-12 "><h6>ROLE:</h6><span class="text-center">{{input.role[2]}}</span></div>
-								</div>
-
-	                           
-							</div>
-
-						</div>
-
-					</div>
-	                 <br>
-					<div class="education">
-						<div class="row clearfix">
-							<div class="education1 col-xs-12 col-md-2 col-sm-12">
-				 	  		<div class="row 1 clearfix">
-				 	  			<div class="col-xs-2 col-md-2 col-sm-2"><img src=""></div>
-				 	  			<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Work Experience</div>
-				 	  		</div>
-				 	  		
-				 	  	</div>
-							<div class="maindetails text-center col-md-10 col-sm-12 col-xs-12 details">
-								<div ng-show="internship" class="row clearfix 4">
-									<div class="row"><h3>Internship</h3></div>
-									<div class="col-xs-12 col-md-4 col-sm-12"><h6>COMPANY NAME :</h6><br><span class="text-center">{{input.company[0]}}</span></div>
-								
-									<div class="col-xs-12 col-md-4 col-sm-12 "> <h6>DURATION:</h6><br><span class="text-center">{{input.duration[0]}}</span></div>
-									<div class="col-xs-12 col-md-4 col-sm-12"> <h6>ROLE :</h6><br><span class="text-center">{{input.role1[0]}}</span></div>
-								</div>
-								<div ng-show="internship"><hr class="black"></div>
-							
-
-							     <div  ng-show="project" class="row clearfix">
-								
-								<div class="maindetails text-center col-md-12 col-sm-12 col-xs-12">
-								<div class="row clearfix 4"><h3>Projects</h3></div>
-                                <div class="row">
-								<div class="col-xs-12 col-md-4 col-sm-12"><h6>TITLE :</h6><br><span class="text-center">{{input.title[0]}}</span></div>
-								
-									<div class="col-xs-12 col-md-4 col-sm-12"><h6>TECHNOLOGY:</h6><br><span class="text-center">{{input.technology[0]}}</span></div>
-									<div class="col-xs-12 col-md-4 col-sm-12"><h6>DESCRIPTION:</h6><br><span class="text-center">{{input.description[0]}}</span></div>
-								</div>
-								<hr class="black">
-								</div>
-
-								</div>
-                                  </div>
-
-							</div>
-	                            </div>
-	                        
-                              <div class="education">
-	                            <div class=" row clearfix">
-							<div class=" col-xs-12 col-md-2 col-sm-12">
-				 	  		<div class="row  clearfix">
-				 	  			<div class="col-xs-12 col-md-2 col-sm-12"><img src=""></div>
-				 	  			<div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Technical Skills</div>
-				 	  		</div>
-				 	  		
-				 	  	</div>
-								<div class="col-md-9 maindetails col-xs-10 col-sm-12 details">
-								<span class="text-center">{{input.technicalskills}}</span>
-										
-								</div>
-							</div>
-								</div>
-							
-						</div>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container-fluid">
 
 
-							</div>
-						</div>
-                      </div>
-                  </div>
-	                  <div class="row ">
-						<div class="col-md-6 col-sm-6 col-xs-6">
-	                     <button id="bt1" type="button" class=" pull-right btn btn-primary btn-sm"  onclick="createJSON()"><span class="glyphicon glyphicon-upload"></span> UPLOAD</button></div>
-	                   
-		                <div class="col-md-6 col-sm-6 col-xs-6"> <button id="bt2" type="button" class="pull-left  btn btn-primary btn-sm" onclick="winprint()"><span class="glyphicon glyphicon-print "></span>  PRINT</button></div>
 
-		                </div>         
+                <div class="main">
+                    <div class="row clearfix r1 r3">
+                        <div class="col-md-2 col-sm-12 col-xs-12">
 
-				
-					<br>
-					
-		            </div>
-						</div>
-					
-							</div>	
-					
-						</div>
-	                     
-					</div>
+                            <canvas id="imageCanvas" class='img-responsive' style="padding:5% ;margin:2%;border-top:10%;border-top:10%"></canvas>
+                        </div>
 
-	         </div>
+                        <div class="col-xs-12 col-md-10 col-sm-12">
+                            <div class="text-center ">
+                                <h1>{{input.name1}}</h1></div><br><br>
+                        </div>
 
-	   </div>
+                        <div class="row clearfix personaldetails ">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="text-center col-xs-12  col-sm-12 col-md-4"></div>
+                                <div class="text-center col-xs-12  col-sm-12 col-md-4">EMAIL: {{input.email}}</div>
+                                <div class="text-center col-xs-12  col-sm-12 col-md-4">CONTACT NUMBER: {{input.contact}}</div>
+                            </div>
+                        </div>
+                    </div>
 
 
-</div>
+                    <div class="background">
+                        <div class="education">
+                            <div class="row clearfix">
+                                <div class="education1 col-xs-12 col-md-2 col-sm-12">
+                                    <div class="row 1 clearfix">
+                                        <div class="col-xs-2 col-md-2 col-sm-2"><img src=""></div>
+                                        <div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Education</div>
+                                    </div>
 
-	</div>
+                                </div>
+                                <div class="col-xs-12 col-md-10 col-sm-12 details">
+                                    <div class=" maindetails text-center row clearfix 4 ">
+                                        <div class="col-md-3 col-xs-12 col-sm-12">
+                                            <h6>COURSE:</h6><br><span>{{input.course[0]}}</span></div>
+                                        <div class="col-md-3 col-xs-12 col-sm-12 ">
+                                            <h6>SCHOOL:</h6><br><span>{{input.school[0]}}</span></div>
+                                        <div class="col-md-2 col-xs-12 col-sm-12 ">
+                                            <h6>BOARD:</h6><br><span>{{input.board[0]}}</span></div>
+                                        <div class="col-md-2 col-xs-12 col-sm-12 ">
+                                            <h6>PERCENTAGE:</h6><br><span>{{input.percentage[0]}}</span></div>
+                                        <div class="col-md-2 col-xs-12 col-sm-12">
+                                            <h6>PASSING YEAR:</h6><br><span>{{input.passingyear[0]}}</span></div>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-<!-- Deepti...removed back white colored portion in form-->
-  <!--<div class="modal-dialog">-->
-  <!-- Deepti...removed back white colored portion in form-->
+                                    </div>
+                                    <hr class="black">
+                                    <div class="maindetails text-center row clearfix 4">
+                                        <div class="col-md-3 col-xs-12 col-sm-12 ">
+                                            <h6>COURSE:</h6><br><span>{{input.course[1]}}</span></div>
+                                        <div class="col-md-3 col-xs-12 col-sm-12 ">
+                                            <h6>SCHOOL:</h6><br><span>{{input.school[1]}}</span></div>
+                                        <div class="col-md-2 col-xs-12 col-sm-12 ">
+                                            <h6>BOARD:</h6><br><span>{{input.board[1]}}</span></div>
+                                        <div class="col-md-2 col-xs-12 col-sm-12 ">
+                                            <h6>PERCENTAGE:</h6><br><span>{{input.percentage[1]}}</span></div>
+                                        <div class="col-md-2 col-xs-12 col-sm-12 ">
+                                            <h6>PASSING YEAR:</h6><br><span>{{input.passingyear[1]}}</span></div>
+                                    </div>
+
+                                    <hr class="black">
+                                    <div class="maindetails text-center row clearfix 4">
+                                        <div class="col-md-3 col-xs-12 col-sm-12 ">
+                                            <h6>COURSE:</h6><br><span class="text-center">{{input.course[2]}}</span></div>
+                                        <div class="col-md-3 col-xs-12 col-sm-12 ">
+                                            <h6>SCHOOL:</h6><br><span class="text-center">{{input.school[2]}}</span></div>
+                                        <div class="col-md-2 col-xs-12 col-sm-12 ">
+                                            <h6>BOARD:</h6><br><span class="text-center">{{input.board[2]}}</span></div>
+                                        <div class="col-md-2 col-xs-12 col-sm-12 ">
+                                            <h6>PERCENTAGE:</h6><br><span class="text-center">{{input.percentage[2]}}</span></div>
+                                        <div class="col-md-2 col-xs-12 col-sm-12 ">
+                                            <h6>PASSING YEAR:</h6><br><span class="text-center">{{input.passingyear[2]}}</span></div>
+
+                                    </div>
 
 
-    <!-- Modal content-->
-    <div class="modal-content orange.lighten-5 ">
-      <div class="modal-header orange.lighten-5 ">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Resume Details</h4>
-      </div>
-      <div class="modal-body">
-      	<form  name="myform" ng-show="status" novalidate >
-	        <div class="main1"ng-show="status">
-	        	<div class="row">
-        		<div class="col-md-12">
-        			<div class="col-md-11"></div>
-        			<div class="col-md-1">
-        	
-        	</div>
-        	</div>
-        		</div>
-	           <div id="personal" class="text-center text-details card describe">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
 
-	           		<!-- Deepti.... made changes in classes...-->
-	                <div class="waves-effect waves-light"><h4>Personal details</h4></div>
-	                  <div class="table-responsive">
-	                <table class="table">
 
-	                    <tr>
-	                    	<div class="input-field col s12">
-	                        <td class="r6">Name </td>
-	                        <td class="r6"><input type="text" id="name1" class="bg" placeholder="Name" required ng-model="input.name1"  name="name1" value=""></td>
-	                        </div>
-	                    </tr>
-	                    <tr>
-	                        <td class="r6"> Email Id</td>
-	                        <td colspan="1" class="r6"><input type="email" id="email" class="bg" placeholder="example@domain.com" ng-model="input.email" name="email" value="email" required></td>
-	                    </tr>
-	                    <tr>
-	                        <td class="r6"> Contact</td>
-	                        <td class="r6"><input type="text" id="contact" class="bg" placeholder="Mobile Number" min="1" name="contact" value="contact" required ng-model="input.contact" ></td>
-	                    </tr>
-	                    <tr>
-	                    	<label>Image File:</label><br/>
-<input type="file" id="imageLoader" name="imageLoader"/>
-	                    </tr>
-	                </table>
-                         </div>
-	             </div>
-	            
-	         
-	          <!--  <div id="file">
+
+
+                        <div class="education">
+                            <div class="row clearfix">
+                                <div class="education1 col-xs-12 col-md-2 col-sm-12">
+                                    <div class="row 1 clearfix">
+                                        <div class="col-xs-2 col-md-2 col-sm-2"><img src=""></div>
+                                        <div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Extra Activities</div>
+                                    </div>
+
+                                </div>
+                                <div class="maindetails text-center col-sm-12 col-xs-12 col-md-10 details ">
+                                    <div class="row clearfix 4 ">
+                                        <div class="col-xs-12 col-md-4 col-sm-12 ">
+                                            <h6>EVENT:</h6><br><span class="text-center">{{input.event[0]}}</span></div>
+                                        <div class="col-xs-12 col-md-4 col-sm-12 ">
+                                            <h6>PLACE:</h6><br><span class="text-center">{{input.place[0]}}</span></div>
+                                        <div class="col-xs-12 col-md-4 col-sm-12 ">
+                                            <h6>ROLE:</h6><br><span class="text-center">{{input.role[0]}}</span></div>
+
+                                    </div>
+                                    <div>
+                                        <hr class="black">
+                                    </div>
+                                    <div ng-show="emptyevent1" class="row clearfix 4">
+                                        <div class="col-xs-12 col-md-4 col-sm-12 ">
+                                            <h6>EVENT:</h6><br><span class="text-center">{{input.event[1]}}</span></div>
+                                        <div class="col-xs-12 col-md-4 col-sm-12 ">
+                                            <h6>PLACE:</h6><br><span class="text-center">{{input.place[1]}}</span></div>
+                                        <div class="col-xs-12 col-md-4 col-sm-12 ">
+                                            <h6>ROLE:</h6><br><span class="text-center">{{input.role[1]}}</span></div>
+
+                                    </div>
+                                    <div ng-show="emptyevent1">
+                                        <hr class="black">
+                                    </div>
+                                    <div ng-show="emptyevent2" class="row clearfix 4">
+                                        <div class="col-xs-12 col-md-4 col-sm-12 ">
+                                            <h6>EVENT:</h6><span class="text-center">{{input.event[2]}}</span></div>
+                                        <div class="col-xs-12 col-md-4 col-sm-12 ">
+                                            <h6>PLACE:</h6><span class="text-center">{{input.place[2]}}</span></div>
+                                        <div class="col-xs-12 col-md-4 col-sm-12 ">
+                                            <h6>ROLE:</h6><span class="text-center">{{input.role[2]}}</span></div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="education">
+                            <div class="row clearfix">
+                                <div class="education1 col-xs-12 col-md-2 col-sm-12">
+                                    <div class="row 1 clearfix">
+                                        <div class="col-xs-2 col-md-2 col-sm-2"><img src=""></div>
+                                        <div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Work Experience</div>
+                                    </div>
+
+                                </div>
+                                <div class="maindetails text-center col-md-10 col-sm-12 col-xs-12 details">
+                                    <div ng-show="internship" class="row clearfix 4">
+                                        <div class="row">
+                                            <h3>Internship</h3></div>
+                                        <div class="col-xs-12 col-md-4 col-sm-12">
+                                            <h6>COMPANY NAME :</h6><br><span class="text-center">{{input.company[0]}}</span></div>
+
+                                        <div class="col-xs-12 col-md-4 col-sm-12 ">
+                                            <h6>DURATION:</h6><br><span class="text-center">{{input.duration[0]}}</span></div>
+                                        <div class="col-xs-12 col-md-4 col-sm-12">
+                                            <h6>ROLE :</h6><br><span class="text-center">{{input.role1[0]}}</span></div>
+                                    </div>
+                                    <div ng-show="internship">
+                                        <hr class="black">
+                                    </div>
+
+
+                                    <div ng-show="project" class="row clearfix">
+
+                                        <div class="maindetails text-center col-md-12 col-sm-12 col-xs-12">
+                                            <div class="row clearfix 4">
+                                                <h3>Projects</h3></div>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-4 col-sm-12">
+                                                    <h6>TITLE :</h6><br><span class="text-center">{{input.title[0]}}</span></div>
+
+                                                <div class="col-xs-12 col-md-4 col-sm-12">
+                                                    <h6>TECHNOLOGY:</h6><br><span class="text-center">{{input.technology[0]}}</span></div>
+                                                <div class="col-xs-12 col-md-4 col-sm-12">
+                                                    <h6>DESCRIPTION:</h6><br><span class="text-center">{{input.description[0]}}</span></div>
+                                            </div>
+                                            <hr class="black">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="education">
+                            <div class=" row clearfix">
+                                <div class=" col-xs-12 col-md-2 col-sm-12">
+                                    <div class="row  clearfix">
+                                        <div class="col-xs-12 col-md-2 col-sm-12"><img src=""></div>
+                                        <div class="col-xs-12 col-sm-12 col-md-10 edu r2 r5">Technical Skills</div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-9 maindetails col-xs-10 col-sm-12 details">
+                                    <span class="text-center">{{input.technicalskills}}</span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <button id="bt1" type="button" class=" pull-right btn btn-primary btn-sm" onclick="createJSON()"><span class="glyphicon glyphicon-upload"></span> UPLOAD</button></div>
+
+        <div class="col-md-6 col-sm-6 col-xs-6"> <button id="bt2" type="button" class="pull-left  btn btn-primary btn-sm" onclick="winprint()"><span class="glyphicon glyphicon-print "></span>  PRINT</button></div>
+
+    </div>
+
+
+    <br>
+
+    </div>
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+
+    </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <!-- Deepti...removed back white colored portion in form-->
+        <!--<div class="modal-dialog">-->
+        <!-- Deepti...removed back white colored portion in form-->
+
+
+        <!-- Modal content-->
+        <div class="modal-content orange.lighten-5 ">
+            <div class="modal-header orange.lighten-5 ">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Resume Details</h4>
+            </div>
+            <div class="modal-body">
+                <form name="myform" ng-show="status" novalidate>
+                    <div class="main1" ng-show="status">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-11"></div>
+                                <div class="col-md-1">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="personal" class="text-center text-details card describe">
+
+                            <!-- Deepti.... made changes in classes...-->
+                            <div class="waves-effect waves-light">
+                                <h4>Personal details</h4></div>
+                            <div class="table-responsive">
+                                <table class="table">
+
+                                    <tr>
+                                        <div class="input-field col s12">
+                                            <td class="r6">Name </td>
+                                            <td class="r6"><input type="text" id="name1" class="bg" placeholder="Name" required ng-model="input.name1" name="name1" value=""></td>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"> Email Id</td>
+                                        <td colspan="1" class="r6"><input type="email" id="email" class="bg" placeholder="example@domain.com" ng-model="input.email" name="email" value="email" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"> Contact</td>
+                                        <td class="r6"><input type="text" id="contact" class="bg" placeholder="Mobile Number" min="1" name="contact" value="contact" required ng-model="input.contact"></td>
+                                    </tr>
+                                    <tr>
+                                        <label>Image File:</label><br/>
+                                        <input type="file" id="imageLoader" name="imageLoader" />
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <!--  <div id="file">
 	                <input type="file" name="pic" accept="image/*">
 	            </div> <div ng-controller="myCtrl">
 	          <a class="waves-effect waves-light btn" ng-click="description()">Education Details</a>-->
-	            <div id="education" class="text-details card describe" >
-	            	<div class="waves-effect waves-light"><h4>Education Details</h4></div>
-	                <div class="table-responsive">
-	              <table class="table edutable" id="edtable">
-	                    <tr>
-	                        <th class="r6">Course</th>
-	                        <th class="r6">College/School</th>
-	                        <th class="r6">Board/University</th>
-	                        <th class="r6">Percentage</th>
-	                        <th class="r6">Passing Year</th>
-	                    </tr>
-	                    <tr class="k">
-	                        <td class="r6"><input id="course0"  class="bg" type="text" required ng-model="input.course[0]" name="course0" value="course0" ></td>
-	                        <td class="r6"><input id="college0"  class="bg" type="text" required ng-model="input.school[0]" name="college0" ></td>
-	                        <td class="r6"><input id="board0"  class="bg" type="text" required ng-model="input.board[0]" name="board0"></td>
-	                        <td class="r6"><input  id="percent0"  class="bg" type="text" required ng-model="input.percentage[0]" name="percent0"></td>
-	                        <td class="r6"><input id="pyear0" class="bg"  type="text"  required ng-model="input.passingyear[0]" name="pyear0"></td>
-	                    </tr>
-						<tr>
-							<td class="r6"><input id="course1"  class="bg" type="text"  ng-model="input.course[1]" ></td>
-							<td class="r6"><input id="college1"  class="bg" type="text"  ng-model="input.school[1]"></td>
-							<td class="r6"><input id="board1"  class="bg" type="text"  ng-model="input.board[1]"></td>
-							<td class="r6"><input id="percent1"type="text" class="bg"   ng-model="input.percentage[1]"></td>
-							<td class="r6"><input id="pyear1"type="text"  class="bg" ng-model="input.passingyear[1]"></td>
-						</tr>
-						<tr>
-							<td class="r6"><input id="course2" type="text" class="bg" required ng-model="input.course[2]"></td>
-							<td class="r6"><input id="college2" type="text"   class="bg" ng-model="input.school[2]"></td>
-							<td class="r6"><input id="board2"  type="text"   class="bg" ng-model="input.board[2]"></td>
-							<td class="r6"><input  id="percent2" type="text"  class="bg"  ng-model="input.percentage[2]"></td>
-							<td class="r6"><input  id="pyear2" type="text"    class="bg" ng-model="input.passingyear[2]"></td>
-						</tr>
+                        <div id="education" class="text-details card describe">
+                            <div class="waves-effect waves-light">
+                                <h4>Education Details</h4></div>
+                            <div class="table-responsive">
+                                <table class="table edutable" id="edtable">
+                                    <tr>
+                                        <th class="r6">Course</th>
+                                        <th class="r6">College/School</th>
+                                        <th class="r6">Board/University</th>
+                                        <th class="r6">Percentage</th>
+                                        <th class="r6">Passing Year</th>
+                                    </tr>
+                                    <tr class="k">
+                                        <td class="r6"><input id="course0" class="bg" type="text" required ng-model="input.course[0]" name="course0" value="course0"></td>
+                                        <td class="r6"><input id="college0" class="bg" type="text" required ng-model="input.school[0]" name="college0"></td>
+                                        <td class="r6"><input id="board0" class="bg" type="text" required ng-model="input.board[0]" name="board0"></td>
+                                        <td class="r6"><input id="percent0" class="bg" type="text" required ng-model="input.percentage[0]" name="percent0"></td>
+                                        <td class="r6"><input id="pyear0" class="bg" type="text" required ng-model="input.passingyear[0]" name="pyear0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"><input id="course1" class="bg" type="text" ng-model="input.course[1]"></td>
+                                        <td class="r6"><input id="college1" class="bg" type="text" ng-model="input.school[1]"></td>
+                                        <td class="r6"><input id="board1" class="bg" type="text" ng-model="input.board[1]"></td>
+                                        <td class="r6"><input id="percent1" type="text" class="bg" ng-model="input.percentage[1]"></td>
+                                        <td class="r6"><input id="pyear1" type="text" class="bg" ng-model="input.passingyear[1]"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"><input id="course2" type="text" class="bg" required ng-model="input.course[2]"></td>
+                                        <td class="r6"><input id="college2" type="text" class="bg" ng-model="input.school[2]"></td>
+                                        <td class="r6"><input id="board2" type="text" class="bg" ng-model="input.board[2]"></td>
+                                        <td class="r6"><input id="percent2" type="text" class="bg" ng-model="input.percentage[2]"></td>
+                                        <td class="r6"><input id="pyear2" type="text" class="bg" ng-model="input.passingyear[2]"></td>
+                                    </tr>
 
-	                </table>
-	            </div>
-	            </div>
+                                </table>
+                            </div>
+                        </div>
 
-	             
-	            <div id="addskills"  class="text-center card describe" >
-	               <div class="waves-effect waves-light"><h4>Technical skills</h4></div>
-	                <input  class="r6 bg" id="technical" ng-model="input.technicalskills"type="text" placeholder="example -: c,java,Android,database" class="text">
-	            </div>
-	            
-	            <div id="project" class="text-center card describe" >
-	            	 <div class="waves-effect waves-light"><h4>Projects</h4></div>
-	            	  <div class="table-responsive">
-	                <table  class="table edutable" id="projecttable">
-	                    <tr>
-	                        <th class="r6">Title</th>
-	                        <th class="r6">Technology used</th>
 
-	                        <th class="r6">Description</th>
-	                    </tr>
-	                    <tr>
-	                        <td class="r6" ><input id="title0" type="text" required ng-model="input.title[0]"></td>
-	                        <td class="r6"><input id="technology0"type="text" required ng-model="input.technology[0]"></td>
-	                        <td class="r6" ><textarea id="description0" required ng-model="input.description[0]"></textarea></td>
-	                    </tr>
-	                    <tr>
-	                        <td class="r6"><input id="title1" type="text"ng-model="input.title[1]"></td>
-	                        <td class="r6"><input id="technology1"type="text"ng-model="input.technology[1]"></td>
-	                        <td class="r6"><textarea id="description1"ng-model="input.description[1]"></textarea></td>
-	                    </tr>
-	                    <tr>
-	                        <td class="r6"><input id="title2" type="text"ng-model="input.title[2]"></td>
-	                        <td class="r6"><input id="technology2"type="text" ng-model="input.technology[2]"></td>
-	                        <td class="r6" ><textarea id="description2"ng-model="input.description[2]"></textarea></td>
-	                    </tr>
-	                </table>
-	                 </div>
-	            </div>
-	            <div id="intern" class="text-center card describe">
-	                 <div class="waves-effect waves-light"><h4>Internship</h4></div>
-	                  <div class="table-responsive">
-	              <table class="table edutable" id="interntable">
-	                    <tr>
-	                        <th class="r6">Company Name</th>
-	                        <th class="r6">Duration</th>
-	                        <th class="r6">Role</th>
-	                    </tr>
-	                    <tr>
-	                        <td class="r6"><input id="company0"   type="text" required ng-model="input.company[0]"></td>
-	                        <td class="r6"><input id="duration0"  type="text" required ng-model="input.duration[0]"></td>
-	                        <td class="r6" ><textarea id="role0"  required ng-model="input.role1[0]"></textarea></td>
-	                    </tr>
-	                    
-	                </table>
-	                
-	            </div>
-                  </div>
+                        <div id="addskills" class="text-center card describe">
+                            <div class="waves-effect waves-light">
+                                <h4>Technical skills</h4></div>
+                            <input class="r6 bg" id="technical" ng-model="input.technicalskills" type="text" placeholder="example -: c,java,Android,database" class="text">
+                        </div>
 
-	            <div id="activity" class="text-center card activity">
-	                 <div class="waves-effect waves-light"><h4>Extra Activities</h4></div>
-	                 <div class="table-responsive">
-	                <table class="table edutable" id="activitytable">
-	                    <tr>
-	                        <th class="r6">Event</th>
-	                        <th class="r6">Place</th>
-	                        <th class="r6">Role</th>
-	                    </tr>
-	                    <tr>
-	                        <td class="r6"><input id="event0" type="text" required ng-model="input.event[0]"></td>
-	                        <td class="r6"><input id="place0"type="text" required ng-model="input.place[0]"></td>
-	                        <td class="r6"><input id="extrarole0"type="text" required ng-model="input.role[0]"></td>
-	                    </tr>
-	                     <tr>
-	                        <td class="r6"><input id="event1" type="text"ng-model="input.event[1]"></td>
-	                        <td class="r6"><input id="place1"type="text"ng-model="input.place[1]"></td>
-	                        <td class="r6"><input id="extrarole1"type="text" ng-model="input.role[1]"></td>
-	                    </tr>
-	                     <tr>
-	                        <td class="r6"><input id="event2" type="text"ng-model="input.event[2]"></td>
-	                        <td class="r6"><input id="place2"type="text" ng-model="input.place[2]"></td>
-	                        <td class="r6"><input id="extrarole2"type="text" ng-model="input.role[2]"></td>
-	                    </tr>
-	                </table>
-	                </div>
-	            </div>
-	            <!-- Deepti..removed skills from form--><!--<div id="skill">
+                        <div id="project" class="text-center card describe">
+                            <div class="waves-effect waves-light">
+                                <h4>Projects</h4></div>
+                            <div class="table-responsive">
+                                <table class="table edutable" id="projecttable">
+                                    <tr>
+                                        <th class="r6">Title</th>
+                                        <th class="r6">Technology used</th>
+
+                                        <th class="r6">Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"><input id="title0" type="text" required ng-model="input.title[0]"></td>
+                                        <td class="r6"><input id="technology0" type="text" required ng-model="input.technology[0]"></td>
+                                        <td class="r6"><textarea id="description0" required ng-model="input.description[0]"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"><input id="title1" type="text" ng-model="input.title[1]"></td>
+                                        <td class="r6"><input id="technology1" type="text" ng-model="input.technology[1]"></td>
+                                        <td class="r6"><textarea id="description1" ng-model="input.description[1]"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"><input id="title2" type="text" ng-model="input.title[2]"></td>
+                                        <td class="r6"><input id="technology2" type="text" ng-model="input.technology[2]"></td>
+                                        <td class="r6"><textarea id="description2" ng-model="input.description[2]"></textarea></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="intern" class="text-center card describe">
+                            <div class="waves-effect waves-light">
+                                <h4>Internship</h4></div>
+                            <div class="table-responsive">
+                                <table class="table edutable" id="interntable">
+                                    <tr>
+                                        <th class="r6">Company Name</th>
+                                        <th class="r6">Duration</th>
+                                        <th class="r6">Role</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"><input id="company0" type="text" required ng-model="input.company[0]"></td>
+                                        <td class="r6"><input id="duration0" type="text" required ng-model="input.duration[0]"></td>
+                                        <td class="r6"><textarea id="role0" required ng-model="input.role1[0]"></textarea></td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+                        </div>
+
+                        <div id="activity" class="text-center card activity">
+                            <div class="waves-effect waves-light">
+                                <h4>Extra Activities</h4></div>
+                            <div class="table-responsive">
+                                <table class="table edutable" id="activitytable">
+                                    <tr>
+                                        <th class="r6">Event</th>
+                                        <th class="r6">Place</th>
+                                        <th class="r6">Role</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"><input id="event0" type="text" required ng-model="input.event[0]"></td>
+                                        <td class="r6"><input id="place0" type="text" required ng-model="input.place[0]"></td>
+                                        <td class="r6"><input id="extrarole0" type="text" required ng-model="input.role[0]"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"><input id="event1" type="text" ng-model="input.event[1]"></td>
+                                        <td class="r6"><input id="place1" type="text" ng-model="input.place[1]"></td>
+                                        <td class="r6"><input id="extrarole1" type="text" ng-model="input.role[1]"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r6"><input id="event2" type="text" ng-model="input.event[2]"></td>
+                                        <td class="r6"><input id="place2" type="text" ng-model="input.place[2]"></td>
+                                        <td class="r6"><input id="extrarole2" type="text" ng-model="input.role[2]"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Deepti..removed skills from form-->
+                        <!--<div id="skill">
 	                <table>
 	                     <a class="waves-effect waves-light cyan darken-4 btn" ng-click="description()">Skills</a>
 	                    <input class="r6" id="hobby" type="text" required placeholder="example -: singing,playing,Travelling">
 	                </table>
 	            </div>-->
-	              <!-- Deepti..removed skills from form-->
-	              
-	  
-	    </form>
-        <!--<p>Some text in the modal.</p>-->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+                        <!-- Deepti..removed skills from form-->
+
+
+                </form>
+                <!--<p>Some text in the modal.</p>-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-6">
+
     </div>
 
-  </div>
-</div>
-	<div class="col-md-6">
-	 
-</div>
+    <!--form over -->
+    </div>
+    <!--form section-->
+    </div>
+    <!--row close-->
 
-	<!--form over -->
-	</div>
-	<!--form section-->
-</div><!--row close-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            window.setTimeout(function() {
 
-<script type="text/javascript">
+                $("html").removeClass("loading");
+            }, 10000);
+            $("#btn4").hide();
+            $(".edutable").clone().appendTo("edutable");
+            /*
+            	if ($(window).width() <946) {
+            		$(".main").css({"max-width":"729px"})
+               $(".main1").css({"margin-top":"85%"})
 
-$(document).ready(function(){
-window.setTimeout(function(){
+               $(".form").css({"left":"0px"})
+               $(".form").css({"max-width":"729px"})
+                $(".main").css({"position":"relative"})
+                $(".main").css({"top":"1290px"})
+                $(".form").css({"margin":"0 auto"})
+                $(".main").css({"max-width":"729px"})
+                 
 
-	$( "html" ).removeClass( "loading" );
-}, 10000);
-	$("#btn4").hide();
-	$( ".edutable" ).clone().appendTo( "edutable" );
-/*
-	if ($(window).width() <946) {
-		$(".main").css({"max-width":"729px"})
-   $(".main1").css({"margin-top":"85%"})
-
-   $(".form").css({"left":"0px"})
-   $(".form").css({"max-width":"729px"})
-    $(".main").css({"position":"relative"})
-    $(".main").css({"top":"1290px"})
-    $(".form").css({"margin":"0 auto"})
-    $(".main").css({"max-width":"729px"})
-     
-
-}
-else{
-	$(".main1").css({"margin-top":"10%"})
-}
+            }
+            else{
+            	$(".main1").css({"margin-top":"10%"})
+            }
 
 
-var width = $(window).width();
-$(window).resize(function() {
-    if ( $(window).width() < 729) {
-        location.reload();
-    }
-    else if ($(window).width() > 729) {
-        location.reload();
-    }
-})
+            var width = $(window).width();
+            $(window).resize(function() {
+                if ( $(window).width() < 729) {
+                    location.reload();
+                }
+                else if ($(window).width() > 729) {
+                    location.reload();
+                }
+            })
 
-*/	
-})
+            */
+        })
 
-          function formvisible(){
-
-          	   
-				console.log('sucess')
-
-				$( ".form" ).animate({
-
-   
-    top: "-1150px",
-    
-  }, 800
-    // Animation complete.
-  );
-
- $( ".visible").animate({
-
-   
-    left: "340px",
-    
-  }, 500
-    // Animation complete.
-  );
-$(".form").css({"display":"block"})
-$("#btn4").show();
-$("#btn3").hide();
+        function formvisible() {
 
 
-			}
+            console.log('sucess')
+
+            $(".form").animate({
 
 
-			function formhide(){
-				
-				console.log('sucess');
-				
+                    top: "-1150px",
 
- 
- $("#btn3").show();
-$("#btn4").hide();
+                }, 800
+                // Animation complete.
+            );
 
-
- 
-  
-
-			}
-var imageLoader = document.getElementById('imageLoader');
-    imageLoader.addEventListener('change', handleImage, false);
-var canvas = document.getElementById('imageCanvas');
-var ctx = canvas.getContext('2d');
+            $(".visible").animate({
 
 
-function handleImage(e){
-    var reader = new FileReader();
-    reader.onload = function(event){
-        var img = new Image();
-        img.onload = function(){
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img,0,0);
+                    left: "340px",
+
+                }, 500
+                // Animation complete.
+            );
+            $(".form").css({
+                "display": "block"
+            })
+            $("#btn4").show();
+            $("#btn3").hide();
+
+
         }
-        img.src = event.target.result;
-    }
-    reader.readAsDataURL(e.target.files[0]);     
-}
-
-console.log(name);
 
 
-             var app = angular.module('myApp', []);
-app.controller('myCtrl', ['$scope', function($scope) {
-  console.log("hello");
-  console.log(email);
-  setTimeout(function() {
-  	
-  	$scope.input={};
-  	 	$scope.input.name1={};
-  	$scope.input.course={};
-  	$scope.input.school={};
-  	$scope.input.board={};
-  	$scope.input.percentage={};
-  	$scope.project=true;
-  	$scope.input.title={};
-  		$scope.input.passingyear={};
-  		$scope.input.technology={};
-  		$scope.input.description={};
-  		$scope.input.company={};
-  		$scope.input.duration={};
-  		$scope.input.role1={};
-  		$scope.input.event={};
-  		$scope.input.place={};
-  		$scope.input.role={};
-  		$scope.emptyevent0=true;
-  		$scope.emptyevent1=true;
-  		$scope.emptyevent2=true;
-  		$scope.internship=true;
-    $scope.input.name1=name1.value;
-$scope.input.email=email.value;
-$scope.input.contact=contact.value;
- $scope.input.course[0]=course0.value;
-  $scope.input.course[1]=course1.value;
-    $scope.input.course[2]=course2.value;
-     $scope.input.school[0]=college0.value;
-     $scope.input.school[1]=college1.value;
-$scope.input.school[2]=college2.value;
-   $scope.input.board[0]=board0.value;
-    $scope.input.board[1]=board1.value;
-    $scope.input.board[2]=board2.value;
-     $scope.input.percentage[0]=percent0.value;
-      $scope.input.percentage[1]=percent1.value;
-       $scope.input.percentage[2]=percent2.value;
-       $scope.input.passingyear[0]=pyear0.value;
-       $scope.input.passingyear[1]=pyear1.value;
-       $scope.input.passingyear[2]=pyear2.value;
-     $scope.input.title[0]=title0.value;
-      $scope.input.title[1]=title1.value;
-       $scope.input.title[2]=title2.value;
-  $scope.input.technology[0]=technology0.value;
-   $scope.input.technology[1]=technology1.value;
- $scope.input.technology[2]=technology2.value;
- $scope.input.description[0]=description0.value;
-   $scope.input.description[1]=description1.value;
- $scope.input.description[2]=description2.value;
-$scope.input.company[0]=company0.value;
-$scope.input.duration[0]=duration0.value;
-$scope.input.role1[0]=role0.value;
-$scope.input.event[0]=event0.value;
-$scope.input.event[1]=event1.value
-$scope.input.event[2]=event2.value;
-$scope.input.place[0]=place0.value;
-$scope.input.place[1]=place1.value;
-$scope.input.place[2]=place2.value;
-$scope.input.role[0]=extrarole0.value;
-$scope.input.role[1]=extrarole1.value;
-$scope.input.role[2]=extrarole2.value;
-$scope.input.technicalskills=technical.value;
-console.log(course0.value);
+        function formhide() {
 
-if(event2.value==""||place2.value==""||extrarole2.value==""){
-	$scope.emptyevent2=false;
-   
-}
-else{
-		$scope.emptyevent1=true;
-}
+            console.log('sucess');
 
-if(event1.value==""||place1.value==""||extrarole1.value==""){
-	$scope.emptyevent1=false;
-	
-}
-else{
-		$scope.emptyevent1=true;
-}
-/*if(company0.value==""||duration0.value==""||role0.value==""){
-	$scope.internship=false;
-  
-}
-else{
-		$scope.internship=true;
-}*/
-if(title0.value==""||technology0.value==""||description0.value==""){
-	$scope.project=false;
-  
-}
-else{
-		$scope.project=true;
-}
 
-    $scope.$apply(); //this triggers a $digest
-  },10000);
-  
 
-  	//$scope.characters=5;
+            $("#btn3").show();
+            $("#btn4").hide();
 
-  	
- 
-}]);
-/*var status=true
-function toggle(){
-	
-	if(status===true){
-		formvisible();
-		status=!status;
-	}
-	
-		if(status==false){
-	formhide()
-}
-	console.log(status);
 
-	
-}
-/*
-app.controller('personal', ['$scope', function($scope) {
-  $scope.description = function(){
 
-  	$scope.myVar=!$scope.myVar;
-  }
-  	;
 
-		
-	}]);		
-app.controller('projects', ['$scope', function($scope) {
-  $scope.description = function(){
+        }
+        var imageLoader = document.getElementById('imageLoader');
+        imageLoader.addEventListener('change', handleImage, false);
+        var canvas = document.getElementById('imageCanvas');
+        var ctx = canvas.getContext('2d');
 
-  	$scope.myVar=!$scope.myVar;
-  }
-  	;
 
-		
-	}]);		
-app.controller('skills', ['$scope', function($scope) {
-  $scope.description = function(){
+        function handleImage(e) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var img = new Image();
+                img.onload = function() {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
 
-  	$scope.myVar=!$scope.myVar;
-  }
-  	;
+        console.log(name);
 
-		
-	}]);*/
 
-			</script>
-			
-			
-	</body>
-	</html>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', ['$scope', function($scope) {
+            console.log("hello");
+            console.log(email);
+            setTimeout(function() {
+
+                $scope.input = {};
+                $scope.input.name1 = {};
+                $scope.input.course = {};
+                $scope.input.school = {};
+                $scope.input.board = {};
+                $scope.input.percentage = {};
+                $scope.project = true;
+                $scope.input.title = {};
+                $scope.input.passingyear = {};
+                $scope.input.technology = {};
+                $scope.input.description = {};
+                $scope.input.company = {};
+                $scope.input.duration = {};
+                $scope.input.role1 = {};
+                $scope.input.event = {};
+                $scope.input.place = {};
+                $scope.input.role = {};
+                $scope.emptyevent0 = true;
+                $scope.emptyevent1 = true;
+                $scope.emptyevent2 = true;
+                $scope.internship = true;
+                $scope.input.name1 = name1.value;
+                $scope.input.email = email.value;
+                $scope.input.contact = contact.value;
+                $scope.input.course[0] = course0.value;
+                $scope.input.course[1] = course1.value;
+                $scope.input.course[2] = course2.value;
+                $scope.input.school[0] = college0.value;
+                $scope.input.school[1] = college1.value;
+                $scope.input.school[2] = college2.value;
+                $scope.input.board[0] = board0.value;
+                $scope.input.board[1] = board1.value;
+                $scope.input.board[2] = board2.value;
+                $scope.input.percentage[0] = percent0.value;
+                $scope.input.percentage[1] = percent1.value;
+                $scope.input.percentage[2] = percent2.value;
+                $scope.input.passingyear[0] = pyear0.value;
+                $scope.input.passingyear[1] = pyear1.value;
+                $scope.input.passingyear[2] = pyear2.value;
+                $scope.input.title[0] = title0.value;
+                $scope.input.title[1] = title1.value;
+                $scope.input.title[2] = title2.value;
+                $scope.input.technology[0] = technology0.value;
+                $scope.input.technology[1] = technology1.value;
+                $scope.input.technology[2] = technology2.value;
+                $scope.input.description[0] = description0.value;
+                $scope.input.description[1] = description1.value;
+                $scope.input.description[2] = description2.value;
+                $scope.input.company[0] = company0.value;
+                $scope.input.duration[0] = duration0.value;
+                $scope.input.role1[0] = role0.value;
+                $scope.input.event[0] = event0.value;
+                $scope.input.event[1] = event1.value
+                $scope.input.event[2] = event2.value;
+                $scope.input.place[0] = place0.value;
+                $scope.input.place[1] = place1.value;
+                $scope.input.place[2] = place2.value;
+                $scope.input.role[0] = extrarole0.value;
+                $scope.input.role[1] = extrarole1.value;
+                $scope.input.role[2] = extrarole2.value;
+                $scope.input.technicalskills = technical.value;
+                console.log(course0.value);
+
+                if (event2.value == "" || place2.value == "" || extrarole2.value == "") {
+                    $scope.emptyevent2 = false;
+
+                } else {
+                    $scope.emptyevent1 = true;
+                }
+
+                if (event1.value == "" || place1.value == "" || extrarole1.value == "") {
+                    $scope.emptyevent1 = false;
+
+                } else {
+                    $scope.emptyevent1 = true;
+                }
+                /*if(company0.value==""||duration0.value==""||role0.value==""){
+                	$scope.internship=false;
+                  
+                }
+                else{
+                		$scope.internship=true;
+                }*/
+                if (title0.value == "" || technology0.value == "" || description0.value == "") {
+                    $scope.project = false;
+
+                } else {
+                    $scope.project = true;
+                }
+
+                $scope.$apply(); //this triggers a $digest
+            }, 10000);
+
+
+            //$scope.characters=5;
+
+
+
+        }]);
+        /*var status=true
+        function toggle(){
+        	
+        	if(status===true){
+        		formvisible();
+        		status=!status;
+        	}
+        	
+        		if(status==false){
+        	formhide()
+        }
+        	console.log(status);
+
+        	
+        }
+        /*
+        app.controller('personal', ['$scope', function($scope) {
+          $scope.description = function(){
+
+          	$scope.myVar=!$scope.myVar;
+          }
+          	;
+
+        		
+        	}]);		
+        app.controller('projects', ['$scope', function($scope) {
+          $scope.description = function(){
+
+          	$scope.myVar=!$scope.myVar;
+          }
+          	;
+
+        		
+        	}]);		
+        app.controller('skills', ['$scope', function($scope) {
+          $scope.description = function(){
+
+          	$scope.myVar=!$scope.myVar;
+          }
+          	;
+
+        		
+        	}]);*/
+    </script>
+
+
+</body>
+
+</html>
