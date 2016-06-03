@@ -1,0 +1,156 @@
+.brand {
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #EB5E28 !important;
+}
+.landing-alert {
+  margin-bottom: 0;
+}
+
+.landing-header {
+  background-size: cover;
+  min-height: 570px;
+}
+
+.landing-header .motto {
+  padding-top: 8%;
+  text-align: left;
+  z-index: 3;
+}
+
+.landing-section {
+  padding: 100px 0;
+}
+
+.landing-section .btn-simple {
+  padding: 0;
+}
+
+.landing-section .column {
+  padding: 0 75px 0 25px;
+}
+
+.navbar-relative {
+  position: relative;
+  z-index: 2;
+}
+
+#register-navbar a {
+  color: #FFF;
+}
+
+.register-background {
+  background: url("../img/b.jpg");
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.register-background .filter-black::after {
+  background-color: rgba(0, 0, 0, 0.5);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.register-background .container {
+  margin-top: 11%;
+  position: relative;
+  z-index: 3;
+}
+
+.register-footer {
+  bottom: 20px;
+  color: #fff;
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+}
+
+.register-footer .fa-heart {
+  color: #EB5E28;
+}
+
+.register-card {
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 8px;
+  color: #fff;
+  max-width: 350px;
+  margin: 20px 0 70px;
+  min-height: 400px;
+  padding: 30px;
+}
+
+.register-card label {
+  margin-top: 15px;
+}
+
+.register-card .title {
+  color: #B33C12;
+  text-align: center;
+}
+
+.register-card .btn {
+  margin-top: 30px;
+}
+
+.register-card .forgot {
+  text-align: center;
+}
+
+
+.alert h5 {
+  margin-bottom: 10px;
+}
+.nav-tabs > li.active :after {
+  border-bottom: 11px solid #262322;
+}
+
+#desc ul li {
+  margin-top: 2em;
+  padding: 1em;
+  line-height: 1.9em;
+  background: rgba(162, 156, 130, 0.25);;
+  list-style: none;
+  border-radius: 2em;
+  box-shadow: 7px 8px 16px 0px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+.nav-tabs > li.active > a {
+  color: #fff !important;
+}
+.nav-tabs > li > a {
+  color: rgb(190,190,190);
+}
+.register-card {
+  box-shadow: 7px 8px 16px 0px #222;
+}
+.form-control:focus {
+  background-color: #efefef;
+  color: #66615B;
+}
+.form-control {
+  color: #fff;
+}
+
+/*The error messages are hidden by default*/
+#m1,#m2,#m3 {
+  display: none;
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    margin-top: 30% !important;
+  }  
+}
