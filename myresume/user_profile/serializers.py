@@ -11,6 +11,6 @@ class UserSerializers(serializers.ModelSerializer):
 
 class StudentSerializer(serializers.ModelSerializer):
 	person = UserSerializers(required=False)
-
+	# image = serializers.ImageField(required= False, use_url = True, max_length=None)
 	class Meta:
 		model = Student

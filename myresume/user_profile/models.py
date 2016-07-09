@@ -7,9 +7,9 @@ class Student(models.Model):
 	"""
 		Model for Student personal information
 	"""
-	phone_regx = RegexValidator(regex=r'^\d{10}$', message="Phone number must be ten digit"
-	user = models.OneToOneField(User)
-	name = models.CharField(max_length = 50,)
+	phone_regx = RegexValidator(regex=r'^\d{10}$', message="Phone number must be ten digit")
+	person = models.OneToOneField(User, primary_key=True)
+	name = models.CharField(max_length = 50)
 	contact = models.CharField(max_length = 10, validators=[phone_regx])
 	skills = models.TextField(blank = True, null = True)
 	image = models.ImageField(upload_to = 'images/', blank=True, null=True)
@@ -35,7 +35,7 @@ class Education(models.Model):
 	year = models.IntegerField(default = datetime.date.today().year)
 
 	class Meta:
-		unique_together = (person, course, year)
+		unique_together = ('person', 'course', 'year')
 
 	def __unicode__(self):
 		return self.person
@@ -60,7 +60,7 @@ class Internship(models.Model):
 
 
 class Activity(models.Model):
-	person = models.ForeignKey(Student, on_delete=CASCADE)
+	person = models.ForeignKey(Student, on_delete=models.CASCADE)
 	event = models.CharField(max_length=50)
 	place = models.CharField(max_length=50)
 	role = models.CharField(max_length=50)
@@ -69,7 +69,7 @@ class Activity(models.Model):
 		return self.person
 
 class Address(models.Model):
-	person = models.ForeignKey(Student, on_delete=CASCADE)
+	person = models.ForeignKey(Student, on_delete=models.CASCADE)
 	line1 = models.CharField(max_length=100)
 	city = models.CharField(max_length=50)
 	state = models.CharField(max_length=50)

@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>form filling</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/angular.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/account.js' %}"></script>
+</head>
+<body>
+	<form id="student" onsubmit="student(this)">
+		{% csrf_token %}
+		<input type="text" name="name">
+		<input type="text" name="contact">
+		<input type="text" name="skills">
+		<input type="date" name="dob">
+		<input type="file" name="imag" onchange="readURL(this)">
+		<input type="hidden" name="image" id="image">
+		<button>222222222</button>
+	</form>
+	<img src="" id="blah">
+	<script type="text/javascript">
+	function student() {
+		event.preventDefault()
+		serializeData = $('#student').serialize()
+		// var serializeData = new FormData($(this)[0]);
+		// console.log(serializeData)
+		// fileInput = document.querySelector('input[type="file"]');
+		// var form_data = new FormData();
+		// form_data.append('image',fileInput.files[0])
+		// form_data.append('name',$('input[name="name"]').val())
+		// form_data.append('contact',$('input[name="contact"]').val())
+		// form_data.append('skills',$('input[name="skills"]').val())
+		// form_data.append('dob',$('input[name="dob"]').val())
+		// form_data.append('y3Ik5lTaBoG9jp4a87NViN7lUNzRBGQF',$('input[name="csrfmiddlewaretoken"]').val())
+		// console.log(form_data.values())
+		// console.log(form_data);
+		$.ajax({
+			url : '/studentAPI/',
+			enctype: 'application/x-www-form-urlencoded',
+			type : 'POST',
+			data : serializeData,
+			processData: false,
+			success : function(response){
+				console.log(response)
+			}
+			,
+			error : function(xhr, errmsg, err){
+				console.log(xhr.responseText)
+			}
+		})
+	}
+
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+                $('#image').val(e.target.result)
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        // $('input[name="image"]').val()
+    }
+
+	</script>
+
+</body>
+</html>
