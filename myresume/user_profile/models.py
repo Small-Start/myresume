@@ -18,13 +18,13 @@ class Student(models.Model):
 	last_update = models.DateTimeField(auto_now = True)
 
 	def __unicode__(self):
-		return self.name
+		return self.person.username
 
 class Education(models.Model):
 	"""
 		Model for Storing Educational details
 	"""
-	person = models.ForeignKey(Student, on_delete=models.CASCADE)
+	person = models.ForeignKey(Student, on_delete=models.CASCADE,related_name='education')
 	course = models.CharField(max_length = 50)
 	college = models.CharField(max_length = 50)
 	board = models.CharField(max_length=50)
@@ -38,42 +38,42 @@ class Education(models.Model):
 		unique_together = ('person', 'course', 'year')
 
 	def __unicode__(self):
-		return self.person
+		return self.person.person.username + ' ' + self.course
 
 class Project(models.Model):
-	person = models.ForeignKey(Student, on_delete=models.CASCADE)
+	person = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='project')
 	title = models.CharField(max_length = 50)
 	technology = models.TextField()
 	description = models.TextField()
 	def __unicode__(self):
-		return self.person
+		return self.person.person.username+ ' ' + self.title
 
 
 class Internship(models.Model):
-	person = models.ForeignKey(Student, on_delete=models.CASCADE)
+	person = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='internship')
 	company = models.CharField(max_length = 50)
 	start_date = models.DateField()
 	end_date  = models.DateField()
 	role = models.CharField(max_length=50)
 	def __unicode__(self):
-		return self.person
+		return self.person.person.username + ' ' + self.company
 
 
 class Activity(models.Model):
-	person = models.ForeignKey(Student, on_delete=models.CASCADE)
+	person = models.ForeignKey(Student, on_delete=models.CASCADE,related_name='activity')
 	event = models.CharField(max_length=50)
 	place = models.CharField(max_length=50)
 	role = models.CharField(max_length=50)
 
 	def __unicode__(self):
-		return self.person
+		return self.person.person.username + ' ' + self.event
 
 class Address(models.Model):
-	person = models.ForeignKey(Student, on_delete=models.CASCADE)
+	person = models.ForeignKey(Student, on_delete=models.CASCADE,related_name='address')
 	line1 = models.CharField(max_length=100)
 	city = models.CharField(max_length=50)
 	state = models.CharField(max_length=50)
 	country = models.CharField(max_length=50)
 	zip = models.IntegerField()
 	def __unicode__(self):
-		return self.person
+		return self.person.person.username + ' ' + self.zip
