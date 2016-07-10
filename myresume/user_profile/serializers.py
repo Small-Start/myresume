@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Student
+from .models import Student, Education
 from django.contrib.auth.models import User
 from rest_framework.fields import CurrentUserDefault
 
@@ -9,8 +9,15 @@ class UserSerializers(serializers.ModelSerializer):
 		model = User
 		fields = ('username','email')
 
+
+class EducationSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Education
+
 class StudentSerializer(serializers.ModelSerializer):
 	person = UserSerializers(required=False)
-	# image = serializers.ImageField(required= False, use_url = True, max_length=None)
+	education = EducationSerializer(many=True, required=False)
 	class Meta:
 		model = Student
+		fields = ('person','name','contact','skills','dob','image','education')
+

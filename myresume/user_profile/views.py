@@ -2,11 +2,10 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.views.generic import View
 from django.http import HttpResponse,HttpResponseRedirect
-from models import Student
-import json
+from models import Student, Education
 from rest_framework import status
 from rest_framework.response import Response
-from serializers import StudentSerializer
+from serializers import StudentSerializer, EducationSerializer
 from rest_framework.views import APIView
 from django.http import Http404
 from pprint import pprint
@@ -25,7 +24,6 @@ class StudentView(View):
 		return render(request, self.template, {})
 	def post(self, request):
 		return HttpResponse('Direct post request is not available, send data through API')
-
 
 class StudentAPI(APIView):
 	"""
@@ -56,3 +54,20 @@ class StudentAPI(APIView):
 			serializer.save(person = request.user)
 			return Response(serializer.data)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class StudentDetail(APIView):
+	def get(self, request, pk):
+		try :
+			user = User.objects.get(username=pk)
+			student = Student.objects.get(pk=user)
+			serializer = StudentSerializer(student)
+			return Response(serializer.data)
+		except:
+			return HttpResponse(status=404)
+
+class EducationDetail(APIView):
+	def get(self, request):
+		student = Student.objects.get(person = request.user)
+		education = Education.objects.filter(person = student)
+		serializer = EducationSerializer(education, many= True)
+		return Response(serializer.data)
