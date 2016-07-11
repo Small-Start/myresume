@@ -11,6 +11,7 @@ from django.http import Http404
 from pprint import pprint
 import base64
 from django.core.files.base import ContentFile
+from rest_framework.permissions import IsAuthenticated
 
 class index(View):
 
@@ -29,6 +30,7 @@ class StudentAPI(APIView):
 	"""
 	List all snippets, or create a new snippet.
 	"""
+	permission_classes = (IsAuthenticated,)
 	def get(self, request, format=None):
 		try :
 			student =  Student.objects.get(person = request.user)
@@ -64,10 +66,3 @@ class StudentDetail(APIView):
 			return Response(serializer.data)
 		except:
 			return HttpResponse(status=404)
-
-class EducationDetail(APIView):
-	def get(self, request):
-		student = Student.objects.get(person = request.user)
-		education = Education.objects.filter(person = student)
-		serializer = EducationSerializer(education, many= True)
-		return Response(serializer.data)
