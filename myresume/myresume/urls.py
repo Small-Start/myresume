@@ -1,5 +1,4 @@
 """myresume URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
 Examples:
@@ -13,12 +12,15 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import include, url, patterns
 from django.contrib import admin
-import account, user_profile
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^account/', include('account.urls')),
-    url(r'', include('user_profile.urls')),
+    url(r'^', include('user_profile.urls')),
 ]
+urlpatterns += patterns('',
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+)
