@@ -10,8 +10,16 @@ class UserSerializers(serializers.ModelSerializer):
 
 
 class EducationSerializer(serializers.ModelSerializer):
+	def __init__(self, *args, **kwargs):
+		many = kwargs.pop('many', True)
+		super(EducationSerializer, self).__init__(many=many, *args, **kwargs)
+
 	class Meta:
 		model = Education
+		extra_kwargs = {'id':{'required':False}, 'person':{'write_only':True,'required':False}}
+
+	
+
 
 class ProjectSerializer(serializers.ModelSerializer):
 	class Meta:

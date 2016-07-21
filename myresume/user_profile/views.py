@@ -12,7 +12,8 @@ from pprint import pprint
 import base64
 from django.core.files.base import ContentFile
 from rest_framework.permissions import IsAuthenticated
-
+from django.conf import settings
+import os
 class index(View):
 
 	def get(self, request):
@@ -39,12 +40,15 @@ class StudentAPI(APIView):
 		except Student.DoesNotExist:
 			raise Http404
 	def post(self, request, format=None):
-		# parser_classes = (MultiPartParser, FormParser,)
+		try :
+			os.remove(settings.MEDIA_ROOT + '/' + request.user.username) # removing old image
+		except :
+			pass
 		try :
 			Data = request.data.copy()
-			img = base64.b64decode(Data['image'].replace('data:image/jpeg;base64',''))
-			if img:
-				Data['image'] = ContentFile(img,request.user.username+'.jpg')
+			ext, imgstr = Data['image'].split(';base64,')
+			extention = ext.split('/')[-1]
+			Data['image'] = ContentFile(base64.b64decode(imgstr),name=request.user.username) # saving image
 		except:
 			pass
 		try :
@@ -66,3 +70,23 @@ class StudentDetail(APIView):
 			return Response(serializer.data)
 		except:
 			return HttpResponse(status=404)
+
+class EducationView(APIView):
+	permission_classes = (IsAuthenticated,)
+	def get(self,request):
+		student =  Student.objects.get(person = request.user)
+		education = Education.objects.filter(person = student)
+		serializer = EducationSerializer(education, many = True)
+		return Response(serializer.data)
+
+	def post(self, request):
+		student =  Student.objects.get(person = request.user).person
+		print request.user
+		Data = request.data.copy()
+		Data['person'] = student
+		print Data
+		serializer = EducationSerializer(data=Data, many=True)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
